@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h2>在 JavaScript 中创建 JSON 对象</h2>
+		<p>
+		Name: <span id="jname"></span><br />
+		Age: <span id="jage"></span><br />
+		Address: <span id="jstreet"></span><br />
+		Phone: <span id="jphone"></span><br />
+		jsonone: <span id="jsonone"></span><br />
+		fname: <span id="fname"></span><br />
+		lname: <span id="lname"></span><br />
+		</p>
+		<script type="text/javascript">
+			var jsonobject={"Name":"Make","Age":"18","Address":"China","Phone":"118116117"}; //花括号里的是对象
+			var jsonone1={
+							"employees": [													//方括号的是数组
+							{ "firstName":"John" , "lastName":"Doe" },						//一个对象对应一个数组
+							{ "firstName":"Anna" , "lastName":"Smith" },
+							{ "firstName":"Peter" , "lastName":"Jones" }
+							]
+						}
+			document.querySelector("#jname").innerHTML=jsonobject.Name;
+			document.querySelector("#jage").innerHTML=jsonobject.Age;
+			document.querySelector("#jstreet").innerHTML=jsonobject.Address;
+			document.querySelector("#jphone").innerHTML=jsonobject.Phone;
+			for(var i=0;i<jsonone1.employees.length;i++)
+			{
+				console.log(jsonone1.employees.length)
+				document.querySelector("#jsonone").innerHTML+=jsonone1.employees[i].firstName +"&nbsp;"+ jsonone1.employees[i].lastName+"</br>";
+			}
+			// eval() 应用
+			var txt = '{ "employees" : [' +'{ "firstName":"Bill" , "lastName":"Gates" },' +
+						'{ "firstName":"George" , "lastName":"Bush" },' +
+						'{ "firstName":"Thomas" , "lastName":"Carter" } ]}';
+						var obj = eval ("(" + txt + ")");
+						document.getElementById("fname").innerHTML = obj.employees[2].firstName
+						document.getElementById("lname").innerHTML = obj.employees[2].lastName
+		</script>
+	</body>
+</html>

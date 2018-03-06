@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            width:490px;
+            margin: 50px auto;
+            height: 170px;
+            border: 1px solid #ccc;
+            padding: 5px;
+            position: relative;
+        }
+        .box .inner{
+            width: 100%;
+            height:100%;
+            overflow: hidden;
+            position: absolute;
+        }
+        .box .list{
+            width: 500%;
+            position: relative;
+        }
+        .box .list li{
+            float: left;
+        }
+        .box .ctr-btn{
+            position: absolute;
+            bottom:20px;
+            left:50%;
+            margin-left: -70px;
+        }
+        .box .ctr-btn span{
+            display: block;
+            float: left;
+            width: 18px;
+            height: 18px;
+            background-color: #fff;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 18px;
+            cursor: pointer;
+        }
+        .box .ctr-btn span.cur{
+            background: #1295ff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <div class="inner">
+            <ul class="list">
+                <li><img src="img/01-y.jpg" alt=""></li>
+                <li><img src="img/02-y.jpg" alt=""></li>
+                <li><img src="img/03-y.jpg" alt=""></li>
+                <li><img src="img/04-y.jpg" alt=""></li>
+                <li><img src="img/03-y.jpg" alt=""></li>
+            </ul>
+        </div>
+        <!--<div class="ctr-btn">
+            <span class="cur">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>-->
+    </div>
+    <a href="javascript:;" id="prev" >上一张</a>
+    <a href="javascript:;" id="next" >下一张</a>
+	<script type="text/javascript">
+		function Banner(){
+			
+			this.box=document.querySelector("#box");
+			this.next=document.querySelector("#next");
+			this.prev=document.querySelector("#prev");
+			this.list=document.querySelector(".list");
+			this.currentIn();
+			this.Btn=document.querySelectorAll(".ctr-btn span");
+			
+			this.timer=null;
+			this.speed=0;
+			this.iTarget=0;
+			this.key=0;
+			
+		}
+		Banner.prototype={
+			//tab切换
+			tab:function(){
+				//console.log(this.Btn)
+				var that=this;
+				for(var i=0;i<this.list.children.length;i++){
+					this.Btn[i].index=i;
+					this.Btn[i].onclick=function(){
+						for(var i=0;i<that.list.children.length;i++){
+								that.Btn[i].className="";
+						}
+						this.className="cur";
+						that.key=this.index;
+						that.iTarget=-490 * this.index;
+						
+						that.buff();
+						
+						//console.log(key)
+						
+					}
+					
+				}
+				
+			},
+			//上一张
+			prev1:function(){
+				var that=this;
+				this.prev.onclick=function(){
+					that.key=--that.key ;
+					if(that.key < 0)
+					{
+						that.key=that.list.children.length-1
+					}
+					
+					that.iTarget=that.key * -490;
+					for(var i=0;i<that.list.children.length;i++){
+								that.Btn[i].className="";
+						}
+						that.Btn[that.key].className="cur";
+					that.buff()
+				}
+				
+			},
+			//下一张
+			next1:function(){
+				//alert()
+				var that=this;
+				this.next.onclick=function(){ //这段和下面那段代码重复可单独放一个函数调用，详见11.zip的banner
+					that.key=++that.key % that.list.children.length;
+					that.iTarget=that.key * -490;
+					for(var i=0;i<that.list.children.length;i++){
+								that.Btn[i].className="";
+						}
+						that.Btn[that.key].className="cur";
+					that.buff()
+				}
+			},
+			//自动轮播
+			autoplay:function(){
+				var timer1=null;
+				var that=this;
+				clearInterval(timer1);
+				timer1=setInterval(function(){
+					that.key=++that.key % that.list.children.length;
+					that.iTarget=that.key * -490;
+					for(var i=0;i<that.list.children.length;i++){
+								that.Btn[i].className="";
+						}
+						that.Btn[that.key].className="cur";
+					that.buff()
+				},2000)
+			},
+			//buff运动
+			buff:function(){
+				var that=this;
+				clearInterval(this.timer);
+		        this.timer=setInterval(function () {
+		            that.speed = (that.iTarget - that.list.offsetLeft) / 10;
+		            that.speed = that.speed > 0  ? Math.ceil(that.speed): Math.floor(that.speed);
+		            that.list.style.left=that.list.offsetLeft + that.speed + "px";
+					//console.log(that.speed)
+		            if (that.speed == 0){
+		                clearInterval(that.timer)
+		            }
+        },30)
+				
+			},
+			//动态生成小圆点
+			currentIn:function(){
+				var oDiv=document.createElement("div");
+				oDiv.setAttribute("class","ctr-btn")
+				this.box.appendChild(oDiv);
+				var that=this;
+				for(var i=0;i<this.list.children.length;i++){
+					var oSpan=document.createElement("span");
+					oSpan.innerHTML=i+1;
+					oDiv.appendChild(oSpan)
+				}
+				oDiv.children[0].className="cur"
+			},
+			//拖拽
+			
+			//绑定事件
+			bindEvent:function(){
+				this.next1();
+				this.prev1();
+				this.autoplay();
+				this.tab();
+			}
+		}
+		var obj=new Banner();
+		obj.bindEvent();
+		//console.log(obj)
+	</script>
+
+</body>
+</html>

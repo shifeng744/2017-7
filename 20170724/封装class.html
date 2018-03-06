@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li class="bg">11</li>
+			<li class="back bg">22</li>
+			<li class="bg">33</li>
+			<li>44</li>
+		</ul>
+		<script type="text/javascript">
+			 function getClass(classname)
+			{
+				if(document.getElementsByClassName)
+				{
+					return document.getElementsByClassName(classname)
+				}
+				else{
+            //ie
+            var dom=document.getElementsByTagName("*");
+
+            var arr=[]; 
+
+            for(var i=0; i<dom.length; i++){
+                /*if (dom[i].className == classname){
+                    arr.push(dom[i])  
+                }*/
+               var textArray=dom[i].className.split(" ");
+				 for(var j=0; j<textArray.length; j++){
+                    if (textArray[j] == classname){
+                        arr.push(dom[i]);
+                    }
+                }
+
+            };
+
+            return arr;
+        }
+
+			}
+			
+			 var bg=getClass("bg");
+    		 bg[0].style.background="red";
+    		 bg[1].style.background="red";
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li class="0">1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<script type="text/javascript">
+			var oUl=document.getElementsByTagName("ul")[0];
+			var aLi=oUl.children;
+			console.log(oUl.lastElementChild);
+			console.log(aLi[1].parentNode);
+			aLi[1].setAttribute("data-jj","11");
+			alert(aLi[0].getAttribute("class"));
+			//aLi[0].removeAttribute("class");
+		</script>
+	</body>
+</html>

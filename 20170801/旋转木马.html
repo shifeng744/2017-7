@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.box{
+				width: 1200px;
+				height: 500px;
+				border: 1px solid red;
+				margin: 50px auto;
+				position: relative;
+				margin-bottom: 100px;
+			}
+			.box ul li{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				
+			}
+			.box ul li img{
+				width: 100%;
+			}
+			
+			.ctr-btn img{
+				position: absolute;
+				top: 50%;
+				left: 0px;
+				margin-top: -56px;
+				z-index: 10;
+				
+			}
+			.ctr-btn .next{
+				left: 1130px;
+			}
+			.ctr-btn .prev{
+				left: 0px;
+			}
+
+		</style>
+	</head>
+	<body style="height: 1000px;">
+		<div class="box">
+			<ul>
+				<li><img src="img/slidepic5.jpg"/></li>
+				<li><img src="img/slidepic6.jpg"/></li>
+				<li><img src="img/slidepic7.jpg"/></li>
+				<li><img src="img/slidepic8.jpg"/></li>
+				<li><img src="img/slidepic9.jpg"/></li>
+			</ul>
+			<div class="ctr-btn">
+				<img src="img/prev.png" class="prev" alt="">
+            	<img src="img/next.png" class="next" alt="">
+			</div>
+		</div>
+		
+		<script src="my.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		var aLi=document.querySelectorAll(".box ul li");
+		var btn=document.querySelectorAll(".box .ctr-btn img");console.log(btn[0])
+		var json=[
+			{width:400,height:250,opacity:50,top:20,left:50,z:1},
+			{width:600,height:370,opacity:70,top:70,left:0,z:2},
+			{width:800,height:500,opacity:100,top:100,left:200,z:3},
+			{width:600,height:370,opacity:70,top:70,left:600,z:2},
+			{width:400,height:250,opacity:50,top:20,left:750,z:1}
+		]
+		cheg()//初始化
+		
+		for(var i=0;i<aLi.length;i++){
+			animate(aLi[i],{
+				width:json[i].width,
+				heigth:json[i].heigth,
+				opacity:json[i].opacity,
+				top:json[i].top,
+				left:json[i].left,
+				zIndex:json[i].z
+			})
+		}
+		   
+       for(var i=0;i<btn.length;i++){
+       	 btn[i].onclick=function(){
+       	 	if(this.className=="next"){
+       	 		//json.push(json.shift());
+       	 		
+       	 		cheg(true)
+       	 	}
+       	 	else{
+       	 		//json.unshift(json.pop());
+       	 		
+       	 		cheg(false)
+       	 	}
+       	 	
+       }
+      }
+       function cheg(off){
+       	if(off==true){
+       		json.push(json.shift());
+       	}
+       	else{
+       		json.unshift(json.pop());
+       	}
+       	for(var i=0;i<json.length;i++){
+       		animate(aLi[i],{
+                width:json[i].width,
+                left:json[i].left,
+                top:json[i].top,
+                zIndex:json[i].z,
+                opacity:json[i].opacity
+            })
+       	 }
+       }
+		</script>
+	</body>
+</html>
+
+
+
+
+

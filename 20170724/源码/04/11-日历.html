@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div id="title">2017000年1月288日&nbsp;星期一</div>
+    <h1 id="date">24dsfdsf</h1>
+</div>
+<script>
+    var title=document.getElementById("title");
+    var date=document.getElementById("date");
+
+    var xq=["星期天","星期一","星期二","星期三","星期四","星期五","星期六"];
+
+
+    var myDate=new Date();
+    var year=myDate.getFullYear(); //年
+    var month=myDate.getMonth(); //月
+    var day=myDate.getDate(); //日
+    var getDay=myDate.getDay();
+
+    title.innerHTML=year +"年" + (month+1) + "月" + day + "日" + xq[getDay];
+    date.innerHTML=day;
+</script>
+
+</body>
+</html>

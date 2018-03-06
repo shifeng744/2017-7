@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			.box{
+				width: 400px;
+				min-height: 500px;
+				border: 1px solid black;
+				margin: 50px auto;
+			}
+			.box .nav{
+				display: flex;
+			}
+			.box .nav li{
+				flex: auto;
+				text-align: center;
+				line-height: 50px;
+			}
+			.box .nav li.cur{
+				color: #31c17b;
+				border-bottom:2px solid #31c17b;
+			}
+			.page01{
+				
+				width: 320px;
+				margin:95px auto;
+				
+			}
+			.page01 .sbox{
+				
+				width: 148px;
+				height: 122px;
+				background: pink;
+			}
+			.page01 .bottom{
+				display: flex;
+				justify-content: space-between;
+			}
+			
+			.page02{
+				
+				width: 320px;
+				margin:95px auto;
+				
+			}
+			.page02 .sbox{
+				
+				width: 148px;
+				height: 122px;
+				background: pink;
+				margin-bottom: 22px;
+			}
+			.page02 .bottom{
+				display: flex;
+				justify-content: space-between;
+				flex-flow: row wrap;
+			}
+			.page03{
+				
+				width: 320px;
+				margin:95px auto;
+				
+			}
+			
+			.page03 .tbox{
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+			.page03 .tbox .tbox-left{
+				width: 92px;
+				height: 79px;
+				background: pink;
+			}
+			.page03 .tbox .tbox-right{
+				width: 142px;
+			}
+			.page03 .tbox .tbox-right .t{
+				width:142px;
+				background: pink;
+				height: 30px;
+			}
+			.page03 .tbox .tbox-right .b{
+				margin-top: 10px;
+				width:142px;
+				background: pink;
+				height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul class="nav"> 
+				<li class="cur">推荐</li>
+				<li>排行</li>
+				<li>搜索</li>
+			</ul>
+			
+			<div class="page01">
+				<p>电台</p>
+				<div class="bottom">
+					<div class="sbox"></div>
+					<div class="sbox"></div>
+				</div>
+			</div>
+			
+			<div class="page02">
+				<p>大大</p>
+				<div class="bottom">
+					<div class="sbox"></div>
+					<div class="sbox"></div>
+					<div class="sbox"></div>
+					<div class="sbox"></div>
+				</div>
+			</div>
+			
+			<div class="page03">
+				<p>大大</p>
+				<div class="tbox">
+					<div class="tbox-left"></div>
+					<div class="tbox-right">
+						<div class="t"></div>
+						<div class="b"></div>
+					</div>
+					<span>></span>
+				</div>
+			</div>
+			<div class="page03">
+				<p>大大</p>
+				<div class="tbox">
+					<div class="tbox-left"></div>
+					<div class="tbox-right">
+						<div class="t"></div>
+						<div class="b"></div>
+					</div>
+					<span>></span>
+				</div>
+			</div>
+			<div class="page03">
+				<p>大大</p>
+				<div class="tbox">
+					<div class="tbox-left"></div>
+					<div class="tbox-right">
+						<div class="t"></div>
+						<div class="b"></div>
+					</div>
+					<span>></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

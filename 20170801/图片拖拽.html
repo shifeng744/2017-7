@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				
+				padding: 0;
+				list-style: none;
+			}
+			ul{
+				width: 640px;
+				margin: 50px auto;
+				position: relative;
+			}
+			ul li{
+				float: left;
+				width: 200px;
+				height: 150px;
+				margin-right: 10px;
+				margin-bottom: 10px;
+			}
+			ul li:nth-child(3n){
+				
+			}
+			ul li.cur{
+            border: 1px dashed red;
+        }
+		</style>
+	</head>
+	<body>
+		<div>
+			<ul>
+				<li><img src="img/1.jpg"/></li>
+				<li><img src="img/2.jpg"/></li>
+				<li><img src="img/3.jpg"/></li>
+				<li><img src="img/4.jpg"/></li>
+				<li><img src="img/5.jpg"/></li>
+				<li><img src="img/1.jpg"/></li>
+				<li><img src="img/2.jpg"/></li>
+				<li><img src="img/3.jpg"/></li>
+				<li><img src="img/4.jpg"/></li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			var ali=document.querySelectorAll("div ul li");
+			var Zindex=1;
+			console.log(ali.length)
+			var imaph=[];
+			for(var i=0;i<ali.length;i++){
+				imaph[i]={left:ali[i].offsetLeft,top:ali[i].offsetTop};
+				//console.log(imaph[i].left)
+			}
+			//布局转换
+			for(var i=0;i<ali.length;i++){
+				ali[i].style.position="absolute";
+				ali[i].style.left=imaph[i].left + "px"
+				ali[i].style.top=imaph[i].top + "px"
+				
+			}
+			for(var i=0;i<ali.length;i++){
+				starDar(ali[i])
+			}
+			function starDar(obj){
+				obj.onmousedown=function(ev){
+					var oEvent=ev || event;
+					Zindex++;
+					var x=oEvent.clientX - obj.offsetLeft;
+					var y=oEvent.clientY - obj.offsetTop;
+					document.onmousemove=function(ev){
+						var oEvent=ev || event;
+						obj.style.left=oEvent.clientX - x +"px"
+						obj.style.top=oEvent.clientY - y +"px"
+						obj.style.zIndex=Zindex;
+						for(var i=0; i<ali.length; i++){
+
+		                    ali[i].className=""; //其他兄弟removeclass
+		                    if (obj == ali[i]) continue;
+		                    if (cdTest(obj,ali[i])){  //碰到到了
+		                        //console.log(i)
+		                        ali[i].className="cur";
+		                    }
+                		}
+					}
+					document.onmouseup=function(){
+					document.onmousemove=null;
+					};
+					return false;
+			}
+			}
+			
+			//碰撞检测
+			function cdTest(obj1,obj2){
+				var l1=obj1.offsetLeft + obj1.offsetWidth;
+				var r1=obj1.offsetLeft;
+				var t1=obj1.offsetTop + obj1.offsetHeight;
+				var b1=obj1.offsetTop;
+				
+				var l2=obj2.offsetLeft + obj2.offsetWidth;
+				var r2=obj2.offsetLeft;
+				var t2=obj2.offsetTop + obj2.offsetHeight;
+				var b2=obj2.offsetTop;
+				
+				if(l2<r1 || r2>l1 || t2<b1 || b2>t1){
+					return false;
+				}
+				else{
+					return true;
+				}
+				
+			}
+		</script>
+	</body>
+</html>

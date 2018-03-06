@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				margin: 100px auto;
+				width: 300px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<h4 id="h4"> </h4>
+			<p id="p"></p>
+		</div>.
+		<script type="text/javascript">
+			var mydate=new Date();
+			var year=mydate.getFullYear();
+			var month=mydate.getMonth();
+			var day=mydate.getDate();
+			var week=mydate.getDay();
+			var box=document.querySelector("#h4");
+			var p=document.querySelector("#p");
+			var arr=["星期天","星期一","星期二","星期三","星期四","星期五","星期六",]
+			box.innerHTML=year+"年"+(month+1)+"月"+day+"日"+"&nbsp;"+arr[week];
+			p.innerHTML=day;
+		</script>
+	</body>
+</html>

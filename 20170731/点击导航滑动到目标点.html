@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			div{
+				width: 100%;
+			}
+			ul{
+				overflow: hidden;
+				background: #ccc;
+				width: 954px;
+				margin: 0 auto;
+				text-align: center;
+			}
+			ul li{
+				float: left;
+				padding: 10px 90px;
+				cursor: pointer;	
+			}
+			ol{
+				width: 1000px;
+				margin: 0 auto;
+			}
+			ol li{
+				
+				height: 1200px;
+				background: #999;
+				width: 960px;
+				margin: 20px;
+			
+			}
+			.cur{
+				background: red;
+			}
+			.fixe{
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			
+		
+		<ul >
+			<li class="cur">A</li>
+			<li>B</li>
+			<li>C</li>
+			<li>D</li>
+			<li>E</li>
+		</ul>
+		</div>
+		<ol>
+			<li>A</li>
+			<li>B</li>
+			<li>C</li>
+			<li>D</li>
+			<li>E</li>
+		</ol>
+		
+		<script src="me.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var ul=document.querySelector("ul");
+			var aLi=document.querySelectorAll("ul li");
+			var div=document.querySelector("div");
+			var oLi=document.querySelectorAll("ol li");
+			var iTarger=0,timer=null;
+			fn()
+			function fn(){
+				window.onscroll=function(){
+				var h=scroll().top;
+				if( h > 20){
+					div.className="fixe"
+				}
+				else{
+					div.className=""
+				}
+				for(var i=0;i<oLi.length;i++){
+					if(h>oLi[i].offsetTop-50){
+						for(var j=0;j<oLi.length;j++){
+							aLi[j].className=""
+						}
+						aLi[i].className="cur"
+					}
+				}
+				
+			}
+			}
+			for(var i=0;i<oLi.length;i++){
+				aLi[i].index=i;
+				aLi[i].onclick=function(){
+					clearInterval(timer);
+					iTarger=oLi[this.index].offsetTop;
+					
+					timer=setInterval(function(){
+						var scrollTop=document.body.scrollTop || document.documentElement.scrollTop;
+						speed=(iTarger-scrollTop)/10;
+						speed=speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+						scrollTo(0,speed+scrollTop);
+						console.log(speed)
+						if(speed==1)
+						{
+							clearInterval(timer)
+						}
+						
+					},30)
+				}
+				
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width:210px;
+            margin:50px auto;
+        }
+        .box > div{
+            width:210px;
+            height: 200px;
+            background: #ccc;
+            word-break: break-all;
+            display: none;
+        }
+        .box > input.cur{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <input class="cur" type="button" value="头条">
+    <input type="button" value="八卦">
+    <input type="button" value="看天下">
+    <input type="button" value="社会">
+
+    <div style="display: block">11111111111111111111111111111111aasdfdsfdssdfds</div>
+    <div>222222222222222222222222</div>
+    <div>333333333333333333333333333333</div>
+    <div>4444444444444444444444444444444444</div>
+</div>
+
+<div class="box">
+    <input class="cur" type="button" value="头条">
+    <input type="button" value="八卦">
+    <input type="button" value="看天下">
+    <input type="button" value="社会">
+
+    <div style="display: block">11111111111111111111111111111111aasdfdsfdssdfds</div>
+    <div>222222222222222222222222</div>
+    <div>333333333333333333333333333333</div>
+    <div>4444444444444444444444444444444444</div>
+</div>
+
+<div class="box">
+    <input class="cur" type="button" value="头条">
+    <input type="button" value="八卦">
+    <input type="button" value="看天下">
+    <input type="button" value="社会">
+
+    <div style="display: block">11111111111111111111111111111111aasdfdsfdssdfds</div>
+    <div>222222222222222222222222</div>
+    <div>333333333333333333333333333333</div>
+    <div>4444444444444444444444444444444444</div>
+</div>
+
+    <script>
+        var oBox=document.getElementsByClassName("box");
+        for(var i=0; i<oBox.length; i++)
+        {
+            tab(oBox[i]);
+        }
+
+
+        function tab(classBox){
+            var aBtn=classBox.getElementsByTagName("input");
+            var aDiv=classBox.getElementsByTagName("div");
+            var timer=null;
+            for(var i=0; i<aBtn.length;i++){
+                //aBtn[i].id=i;  //关键代码
+                aBtn[i].onmouseover=function (num) {
+                    return function () {
+                        clearTimeout(timer);
+                        timer=setTimeout(function () {
+                            for(var i=0; i<aBtn.length;i++){
+                                aBtn[i].className="";
+                                aDiv[i].style.display="none"
+                            }
+                            aBtn[num].className="cur";
+                            aDiv[num].style.display="block"
+                        },500);
+
+                    };
+                }(i);
+            }
+        }
+
+
+    </script>
+</body>
+</html>

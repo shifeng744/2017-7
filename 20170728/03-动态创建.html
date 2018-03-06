@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            width:640px;
+            margin: auto;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+
+
+<ul id="ul">
+
+</ul>
+
+<script>
+    var ul=document.getElementById("ul");
+    var json={
+            imgPath:[
+                ["img/1.jpg"],
+                ["img/2.jpg","img/3.jpg"],
+                ["img/4.jpg","img/5.jpg","img/6.jpg"],
+                ["img/7.jpg","img/8.jpg","img/8.jpg","img/9.jpg"]
+            ]
+    };
+
+    //创建Li
+    for(var i=0; i<json.imgPath.length; i++){
+        var oLi=document.createElement("li");  //创了4
+        ul.appendChild(oLi);
+
+        bindImg(i,json.imgPath[i],oLi)
+        //console.log(json.imgPath[i][i])
+    }
+
+    //创建img
+    function bindImg(index,arr,oLi){
+        //console.log(arr)
+        for(var i=0;i<arr.length; i++){
+            var oImg=document.createElement("img");
+            oImg.src=arr[i];  //图片路径
+            oLi.appendChild(oImg);
+            ul.children[index].children[i].style.width=100 / arr.length + "%"
+        }
+
+        //ul.children[0].children[0].style.width="100%"
+        //ul.children[1].children[0].style.width="100%"
+        //ul.children[2].children[1].style.width="100%"
+
+    }
+
+
+
+</script>
+
+</body>
+</html>

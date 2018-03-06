@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.clock{
+				width: 600px;
+				height: 600px;
+				position: relative;
+				text-align: center;
+				background: url(images/clock.jpg);
+			}
+			.h{
+				background: url(images/hour.png) no-repeat center;
+				width: 600px;
+				height: 600px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.m{
+				background: url(images/minute.png) no-repeat center;
+				width: 600px;
+				height: 600px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			.s{
+				background: url(images/second.png) no-repeat center;
+				width: 600px;
+				height: 600px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="clock">
+			<div class="h"></div>
+			<div class="m"></div>
+			<div class="s"></div>
+			<script type="text/javascript">
+				var h=document.querySelector(".h");
+				var m=document.querySelector(".m");
+				var s=document.querySelector(".s");
+				setInterval(function(){
+					var mydate=new Date();
+				var ss=mydate.getSeconds();
+				var mm=mydate.getMinutes();
+				var hh=mydate.getHours();
+				s.style.transform="rotate("+ss*6+"deg)";
+				m.style.transform="rotate("+mm*6+"deg)";
+				h.style.transform="rotate("+hh*30+"deg)";
+				},1000)
+				
+			</script>
+		</div>
+	</body>
+</html>

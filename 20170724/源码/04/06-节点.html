@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<script>
+    var oUl=document.getElementsByTagName("ul")[0];
+    //var aLi=oUl.children;  选择第一个儿子
+    var fisrtLi=oUl.lastElementChild || oUl.lastChild;  //正常 浏览器 条件要放在前面
+
+    fisrtLi.style.background="red"
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            display: block;
+            margin: 0 auto;
+        }
+        #box{
+            width: 1400px;
+            text-align: center;
+        }
+        #img{
+          position: relative;
+        }
+        .fixed{
+        	position: fixed;
+        	top: 0;
+        	left: 0;
+        }
+        img{
+        	vertical-align: middle;
+        	
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div>
+            <img src="img/top.png">
+        </div>
+        <div id="nav" >
+            <img src="img/nav.png" >
+        </div>
+        <div>
+            <img src="img/main.png">
+        </div>
+    </div>
+    <script src="me.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var nav=$("#nav")
+	var H=nav.offsetTop;
+	window.onscroll=function(){
+		var scrollTop=scroll().top;
+		if(scrollTop > H){
+			nav.setAttribute("class","nav fixed")
+		}
+		else{
+			nav.className=" ";
+		}
+	}
+	
+
+
+</script>
+</body>
+</html>

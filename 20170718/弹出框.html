@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				background: pink;
+				width: 200px;
+				margin: 50px auto;
+			}
+			#box1{
+				position: absolute;
+				background: black;
+				color: white;
+				max-width: 150px;
+				min-height: 100px;
+				top: 0;
+				left: 0;
+				display: none;
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<p id="box">
+			辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助辅助
+		</p>
+		<div id="box1">1111</div>
+		<script type="text/javascript">
+		
+		textUp();
+			function textUp(){
+				var text=document.querySelector("p");
+				var box=document.querySelector("#box1");
+				text.onmouseup=function(ev){
+					var oEvent=ev || event;
+					var x=oEvent.clientX;
+					var y=oEvent.clientY;
+					show(box,x,y,text)
+					
+					var text="";
+			if(window.getSelection)
+                {
+                    text = window.getSelection().toString();   // 转换为字符串
+                }
+                else
+                {
+                    text = document.selection.createRange().text;   // 
+				}
+                if(text)
+                {
+                	show(box,x,y,text)
+                	
+                }
+                
+				}
+			}
+			//显示盒子
+			function show(box,x,y,text){
+				box.style.display="block";
+				box.style.left=x+"px";
+				box.style.top=y+"px";
+				box.innerHTML=text;
+			}
+			
+			//隐藏盒子
+			/*document.onmousedown=function(ev){
+				var oEvent=ev || event;
+				var box=document..querySelector("#box1");
+				oEvent.cancelBubble=true;
+				box.style.display="none";
+			}*/
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+
+			
+			
+		}
+			#box{
+				width: 150px;
+				height: 150px;
+				background: pink;
+				position: absolute;
+			
+			
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		
+		
+		
+		<script type="text/javascript">
+		var box=document.getElementById("box");
+		var speed=1;
+			document.onkeydown=function(ev){
+				var oEvent=ev || event;
+				if(oEvent.keyCode == 37){
+					box.style.left=box.offsetLeft-speed+"px"
+				}
+				else if(oEvent.keyCode == 38){
+					box.style.top=box.offsetTop-speed+"px"
+				}
+				else if(oEvent.keyCode == 39){
+					box.style.left=box.offsetLeft+speed+"px"
+				}
+				else if(oEvent.keyCode == 40){
+					box.style.top=box.offsetTop+speed+"px"
+				}
+			}
+		</script>
+	</body>
+</html>

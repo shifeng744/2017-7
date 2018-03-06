@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			div{
+				height: 0px;
+				width: 100%;
+				border: 1px solid red;
+			}
+			ul{
+				list-style: none;
+				height: 60px;
+				 overflow: hidden;
+            position: absolute;
+			}
+			ul li{
+				 float: left;
+				padding: 0 25px;
+				border: 1px solid black;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+
+			</ul>
+		</div>
+		<script type="text/javascript">
+		 var oul = document.querySelector("ul");
+
+        init();
+        function init() {
+            var arr = new Array("推荐","百家","本地","图片","娱乐","社会","军事","互联网","科技","女人","搞笑","生活","国际","国内","体育");
+            for(var i=0; i<arr.length; i++){
+                oul.innerHTML += "<li>"+arr[i]+"</li>";
+            }
+
+            var ali = document.querySelectorAll("li");
+            var result = 0;
+            for(var i=0; i<ali.length; i++){
+                result += ali[i].length;
+            }
+
+            oul.style.width=result + "px";
+        }
+
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+

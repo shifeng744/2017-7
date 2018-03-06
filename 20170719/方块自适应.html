@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				
+			}
+			ul{
+				position: relative;
+				width: 100%;
+				list-style: none;
+				
+			}
+			ul li{
+				background: deepskyblue;
+				width: 16.66666666%;
+				float: left;
+				min-height: 150px;
+				margin-top: 20px;;
+				
+				
+			}
+			li:nth-child(2n){
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		
+		
+		<script type="text/javascript" src="my.js">
+			
+		</script>
+	
+		 <script type="text/javascript">
+		 	var ul=document.querySelector("ul");
+		 	var li=document.querySelectorAll("li");
+		 	var arr=[];
+		 	fn1();
+		 	init();
+		    function fn1(){
+		    	var x=document.body.clientWidth;
+		 		for(var i=0;i<li.length;i++){
+		 			
+			 		li[i].style.position="static";
+			 		
+			 		
+			 		if(x>900)
+			 		{
+			 			li[i].style.width="16.66666666%";
+			 			
+			 		}
+			 		if(x<=900)
+			 		{
+			 			li[i].style.width="25%";
+			 			
+			 		}
+			 		if(x<=640)
+			 		{
+			 			li[i].style.width="50%";
+			 			
+			 		}
+		 		}
+		    }
+		 	function init(){
+		 		for(var i=0;i<li.length;i++){
+		 		arr[i]={left:li[i].offsetLeft,top:li[i].offsetTop};
+		 			}
+		 	
+		 	//布局转换
+		 	
+		 		for(var i=0;i<li.length;i++){
+		 		li[i].style.position="absolute";
+		 		animate(li[i],{left:arr[i].left,top:arr[i].top})
+		 		
+		 		}
+		 	}
+
+		 		
+		 	
+		 	window.onresize=function(){
+		 		var x=document.body.clientWidth;
+		 		
+		 		for(var i=0;i<li.length;i++){
+		 			
+			 		li[i].style.position="static";
+			 		
+			 		
+			 		if(x>900)
+			 		{
+			 			li[i].style.width="16.66666666%";
+			 			
+			 		}
+			 		if(x<=900)
+			 		{
+			 			li[i].style.width="25%";
+			 			
+			 		}
+			 		if(x<=640)
+			 		{
+			 			li[i].style.width="50%";
+			 			
+			 		}
+		 		}
+		 		init();
+		 	}
+
+	
+		 	
+		 </script>
+	</body>
+</html>
+
+
+
+
+

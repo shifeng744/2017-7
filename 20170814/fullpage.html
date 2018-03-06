@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.css"/>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css"/>
+	</head>
+	<body>
+		<div id="dowebok">
+    <div class="section page01">
+        <h3 class="">第一屏</h3>
+    </div>
+    <div class="section page02">
+        <h3 class="">第二屏</h3>
+    </div>
+    <div class="section page03">
+        <h3 class=" ">第三屏</h3>
+    </div>
+    <div class="section page04">
+        <h3 class="">第四屏</h3>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+	
+$(function(){
+    $('#dowebok').fullpage({
+    	sectionsColor:["red","yellow","#ccc","pink",],
+    	afterLoad:function(anchorLink ,index){
+    		if(index==1){
+    			$(".page01 h3").addClass("animated rotateIn")
+    		}
+    		else if(index==2){
+    			$(".page02 h3").addClass("animated rotateIn")
+    		}
+    		else if(index==3){
+    			$(".page03 h3").addClass("animated rotateIn")
+    		}
+    		else if(index==4){
+    			$(".page04 h3").addClass("animated rotateIn")
+    		}
+    	}
+    });
+});
+</script>
+	</body>
+</html>

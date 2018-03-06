@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul li{
+				text-align: center;
+				list-style: none;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script type="text/javascript">
+		var oul=document.querySelector("ul");
+		var oli=oul.children;
+		//var enddate=new Date("2017/7/24 19:00");
+		//var enddate2=new Date("2017/7/24 20:00");
+		var arr=[new Date("2017/7/24 20:01:30"),new Date("2017/7/24 21:20"),new Date("2017/7/24 22:30:15")]
+		function fn1(endtime,i){
+			var timer=setInterval(function(){
+			var myadte=new Date();
+			var Countdown=(endtime.getTime()-myadte.getTime())/1000;
+			var t=parseInt(Countdown/60/60/24);
+			var h=parseInt(Countdown/60/60%24);
+			var f=parseInt(Countdown/60%60);
+			var s=parseInt(Countdown%60);
+		
+				oli[i].innerHTML=t+"天"+h+":"+f+":"+s	
+		},500)
+		}
+		for(var i=0;i<arr.length;i++){
+			
+			fn1(arr[i],i);
+			
+		}
+
+		
+		</script>
+	</body>
+</html>

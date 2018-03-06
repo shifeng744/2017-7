@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			ul{
+				width: 250px;
+				height: 250px;
+				margin: 100px auto;
+				position: relative;
+				border: 1px solid red;
+				overflow: hidden;
+			}
+			ul li{
+				float:left;
+				background: red;
+				width: 250px;
+				height: 250px;
+				position: absolute;
+				left: 250px;
+			}
+			ul li:nth-child(2){
+				background: green;
+			}
+			ul li:nth-child(3){
+				background: blue;
+			}
+			input{
+				text-align: center;
+				margin: -20px auto;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<input type="button" name="btn" id="btn" value="下一张" />
+		<script src="me.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var li=document.querySelectorAll("ul li");
+			var btn=document.querySelector("#btn");
+			var key=0
+			li[0].style.left=0+"px";
+			btn.onclick=function(){
+				
+				animate(li[key],{left:-li[0].offsetWidth});
+				key++;
+				if(key >= li.length)
+				{
+					key=0;
+					
+				}
+				
+				li[key].style.left=li[0].offsetWidth+"px";
+				animate(li[key],{left:0});
+				//console.log(key)
+			}
+			
+		</script>
+	</body>
+</html>

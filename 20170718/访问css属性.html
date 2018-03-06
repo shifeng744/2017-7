@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				height: 120px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			
+		</div>
+		<script type="text/javascript">
+			var box=document.querySelector("#box");
+			// console.log(box.currentStyle.height); //ie兼容
+			//console.log(getComputedStyle(box,null).height)  // 其他浏览器
+			
+			
+			
+			
+			//封装兼容
+			function getStyle(obj,attr){
+				if(obj.currentStyle){
+					//ie
+					return obj.currentStyle[attr];
+				}
+				else{
+					return getComputedStyle(obj,null)[attr]
+				}
+			}
+			console.log(getStyle(box,"height"))
+			
+		</script>
+	</body>
+</html>

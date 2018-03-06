@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#big{
+				width: 500px;
+				background: #ccc;
+				height: 15px;
+				margin: 150px auto;
+				position: relative;
+			}
+			#box{
+				width: 0px;
+				height: 100%;
+				background: #049FBB;
+			}
+			#small{
+				width: 15px;
+				height: 40px;
+				background: #049FBB;
+				position: absolute;
+				top: 50%;
+				margin-top: -18px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="big">
+			<div id="box"></div>
+			<div id="small"></div>
+			<p id="text"></p>
+		</div>
+		
+		<script type="text/javascript">
+			var big=document.getElementById("big");
+			var box=document.getElementById("box");
+			var text=document.getElementById("text");
+			var small=document.getElementById("small");
+			
+			small.onmousedown=function(ev){
+				var oEvent=ev || event;
+				var x=oEvent.clientX - big.offsetLeft;
+				var that=this;
+				document.onmousemove=function(ev){
+					var oEvent=ev || event;
+					var mx=oEvent.clientX - big.offsetLeft;
+					small.style.left=mx +"px";
+					box.style.width=mx +"px"
+					if(that.offsetLeft <0){
+						
+						that.style.left=0 +"px";
+						box.style.width=0 +"px";
+					}
+					else if(that.offsetLeft>=big.offsetWidth)
+					{
+						that.style.left=big.offsetWidth +"px";
+						box.style.width=big.offsetWidth +"px";
+					}
+					text.innerHTML=parseInt(mx / big.offsetWidth *100) +"%"
+					if(mx / big.offsetWidth *100 <= 0){
+						text.innerHTML=0 +"%"
+					}
+					else if(mx / big.offsetWidth *100 >= 100){
+						text.innerHTML=100 +"%"
+					}
+					
+
+
+				}
+				document.onmouseup=function(ev){
+						document.onmousemove=null;
+					}
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				text-align: center;
+			}
+			ul{
+				overflow: hidden;
+				width: 700px;
+				margin: 150px auto;
+				
+			}
+			ul li{
+				width: 150px;
+				height: 10px;
+				background: #ccc;
+				float: left;
+				position: relative;
+			}
+			li + li{
+				margin-left: 10px;
+			}
+			span{
+				
+				height: 100%;
+				background: red;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li><!--<span></span>--></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script type="text/javascript">
+			var oBox=document.querySelectorAll("li");
+			var timer=null,key=0;
+			init( )//初始化
+			function init(){
+				var oSpan=document.createElement("span");
+					for(var i=0;i<oBox.length;i++){
+						oBox[i].innerHTML="";
+					}
+					oBox[key].appendChild(oSpan)
+					fn1(oSpan,key);
+			}
+			//轮播进度条
+			function fn(){
+				clearInterval(timer)
+				timer=setInterval(function(){
+				key++;
+				if(key==4){
+					key=0;
+				}
+				var oSpan=document.createElement("span");
+					for(var i=0;i<oBox.length;i++){
+						oBox[i].innerHTML="";
+					}
+					oBox[key].appendChild(oSpan)
+					fn1(oSpan,key);
+				console.log(key)
+			},2000)
+			}
+			fn()
+			//进度条滑动
+			function fn1(oSpan,key){
+				var timer=null,speed=2;
+				clearInterval(timer);
+				timer=setInterval(function(){
+					if(oSpan.offsetWidth >= 150){
+						clearInterval(timer)
+					}
+					
+					oSpan.style.width=oSpan.offsetWidth + speed + "px";
+				},25)
+			}
+		</script>
+	</body>
+</html>
+
+
+
+
+
+ 

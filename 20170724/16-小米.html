@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            border: 1px solid #ccc;
+            width:512px;
+            margin: 50px auto;
+            height:400px;
+            overflow: hidden;
+            position: relative;
+        }
+        .box span.down{
+            top:50%;
+        }
+        .box span{
+            width: 100%;
+            display: block;
+            height:50%;
+            background: #000;
+            position: absolute;
+            top: 0px;
+            left:0px;
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="box" >
+        <img src="images/mi.png" alt="">
+        <span class="up"></span>
+        <span class="down"></span>
+    </div>
+    <div class="box" >
+        <img src="images/mi.png" alt="">
+        <span class="up"></span>
+        <span class="down"></span>
+    </div>
+    <div class="box" >
+        <img src="images/mi.png" alt="">
+        <span class="up"></span>
+        <span class="down"></span>
+    </div>
+<script>
+    
+    var timer=null,speed= -5;
+    var boxlength=document.getElementsByClassName("box").length;
+	for(var i=0;i<boxlength;i++){
+		var obox=document.getElementsByClassName("box")[i];
+    	var box=obox.children;
+		fn(box)
+	}
+	
+	function fn(box){
+		box[1].onmouseover=function () {
+        clearInterval(timer);
+        timer=setInterval(function () {
+            if (box[0].offsetTop<= box[0].parentNode.offsetHeight - box[0].offsetHeight)
+            {
+                clearInterval(timer)
+            }
+            else{
+                box[0].style.marginTop= box[0].offsetTop + speed + "px"
+            }
+
+        },30)
+    };
+    box[2].onmouseover=function () {
+        clearInterval(timer);
+        timer=setInterval(function () {
+            if (box[0].offsetTop>=0)
+            {
+                clearInterval(timer)
+            }
+            else{
+                box[0].style.marginTop= box[0].offsetTop - speed + "px"
+            }
+        },30)
+    }
+	}
+</script>
+
+</body>
+</html>

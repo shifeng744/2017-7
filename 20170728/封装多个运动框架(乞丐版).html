@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				position: relative;
+				background: greenyellow;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="btn200" value="到200" />
+		<input type="button" name="" id="btn800" value="到800" />
+		<div id="box"></div>
+		<script src="me.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var btn200=document.getElementById("btn200");
+			var btn800=document.getElementById("btn800");
+			var box=document.getElementById("box");var speed=0,timer=null;
+			btn200.onclick=function(){
+				animal(box,{left:200,height:400,width:300})
+			}
+			btn800.onclick=function(){
+				animal(box,{left:800})
+			}
+			
+			function animal(obj,json){
+				clearInterval(obj.timer);
+				
+				obj.timer=setInterval(function(){
+					var off=true;
+					var current=0;
+					for(var attr in json){
+					var current=parseInt(getStyle(obj,attr));
+					speed=(json[attr] - current)/10;
+					speed=speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+					obj.style[attr]=current + speed + "px";
+					}
+
+					console.log("1")
+				},30)
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+
+			
+		</script>
+	</body>
+</html>

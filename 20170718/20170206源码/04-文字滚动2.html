@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width:100%;
+            height:200px;
+            background: rgba(0,0,0,.5);
+            overflow: hidden;
+            position: relative;
+            margin-top: 50px;
+        }
+        .box .inner{
+            position: relative;
+        }
+        .box .inner li{
+            line-height: 200px;
+            text-align: center;
+            font-size: 50px;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .box .btn-ctr{
+            position: absolute;
+            list-style: none;
+            left:50%;
+            margin-left: -20px;
+            bottom: 20px;
+        }
+        .box .btn-ctr li{
+            width: 10px;
+            height: 10px;
+            background: #000000;
+            float: left;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .box .btn-ctr li.cur{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="inner">
+            <li>技术创造价值 服务成就卓越！</li>
+            <li>技术创造价值 服务成就卓越！1111</li>
+        </ul>
+        <ol class="btn-ctr">
+            <li class="cur"></li>
+            <li></li>
+        </ol>
+    </div>
+
+    <div class="a">1</div>
+    <div class="a">2</div>
+
+    <script>
+        var inner=document.querySelector(".box .inner");
+        var box=document.querySelector(".box");
+        var timer=null,speed=0,iTarget=-0,key=0; //控制整个图播放
+        var timer2=null;
+
+        inner.innerHTML+=inner.innerHTML;
+        textAuto();
+        bindcur();
+        texthover()
+
+
+        //自动滚动
+        function textAuto(){
+            clearInterval(timer2);
+            timer2=setInterval(function(){
+               // key++;
+                key=++key % 4;
+                if (key>=3){
+                    key=1;
+                    inner.style.top="0px"
+                }
+                iTarget= -key*box.offsetHeight;
+                buff();
+                //inner.style.top=iTarget+"px"
+            },2000)
+        }
+
+
+        //缓冲运动
+        function buff(){
+            clearInterval(timer);
+            timer=setInterval(function(){
+
+                speed = (iTarget - inner.offsetTop) / 10;
+                //speed = 500 - 0     50
+                //speed = 500 - 0     45
+                speed =  speed >0 ? Math.ceil(speed) : Math.floor(speed);  //
+
+                inner.style.top= inner.offsetTop + speed + "px";
+
+                if (speed==0)
+                {
+                    clearInterval(timer)
+                }
+            },30)
+        }
+
+        //点击小原点
+        function bindcur(){
+            var btn_ctr=document.querySelector(".btn-ctr");
+            var btn=btn_ctr.children; //按钮
+alert(btn.length)
+            for(var i=0; i<btn.length; i++){
+                btn[i].index=i+1;
+                btn[i].onclick=function () {
+                    for(var i=0; i<btn.length; i++){
+                        btn[i].className="";
+                    }
+                    this.className="cur";
+
+                    key=this.index;
+
+                    iTarget=-key*box.offsetHeight;
+
+                    buff();
+
+                }
+            }
+
+        }
+
+        //移入移出
+        function texthover(){
+            box.onmouseover=function(){
+                clearInterval(timer2);
+                this.onmouseout=function(){
+                    textAuto();
+                }
+            };
+        }
+    </script>
+
+</body>
+</html>

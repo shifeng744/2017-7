@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul{
+            width:640px;
+            margin: 50px auto;
+            font-size: 0px;
+            position: relative;
+        }
+        ul li{
+            /*display: inline-block;*/
+            float: left;
+            width:202px;
+            height: 152px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        ul li:nth-child(3n){
+            margin-right: 0px;
+        }
+        ul li.cur{
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <li class=""><img src="img/1.jpg" alt=""></li>
+    <li><img src="img/2.jpg" alt=""></li>
+    <li><img src="img/3.jpg" alt=""></li>
+    <li><img src="img/4.jpg" alt=""></li>
+    <li><img src="img/5.jpg" alt=""></li>
+    <li><img src="img/1.jpg" alt=""></li>
+    <li><img src="img/2.jpg" alt=""></li>
+    <li><img src="img/3.jpg" alt=""></li>
+    <li><img src="img/4.jpg" alt=""></li>
+</ul>
+<script>
+    var aLi=document.querySelectorAll("ul li");
+    var aPos=[];
+    var Zindex=2; //图片z
+
+    //获取位置
+    for(var i=0; i<aLi.length; i++){
+        aPos[i]={left:aLi[i].offsetLeft,top:aLi[i].offsetTop}
+    }
+
+
+    console.log(aPos)
+    //布局转换
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].style.position="absolute";
+        aLi[i].style.left=aPos[i].left+"px";
+        aLi[i].style.top=aPos[i].top+"px";
+    }
+
+    //拖拽
+    for(var i=0; i<aLi.length; i++){
+        startDar(aLi[i]);
+    }
+    function startDar(obj) {
+        obj.onmousedown=function (ev) {
+            var oEvent=ev || event;
+            Zindex++;
+            var X = oEvent.clientX - obj.offsetLeft;
+            var Y = oEvent.clientY - obj.offsetTop;
+            document.onmousemove=function (ev) {
+                var oEvent=ev || event;
+                //console.log(oEvent.clientX)
+                obj.style.left= oEvent.clientX - X + "px";
+                obj.style.top= oEvent.clientY - Y + "px";
+                obj.style.zIndex=Zindex; //让图片显示在最上面
+
+                /*for(var i=0; i<aLi.length; i++){
+
+                    aLi[i].className=""; //其他兄弟removeclass
+                    if (obj == aLi[i]) continue;
+                    if (cdTest(obj,aLi[i])){  //碰到到了
+                        //console.log(i)
+                        aLi[i].className="cur";
+                    }
+                }*/
+                for(var i=0; i<aLi.length; i++){
+                    aLi[i].className="";
+                }
+                var oNear=findNearset(obj);
+                if (oNear){
+                    oNear.className="cur";
+                }
+
+            };
+
+            document.onmouseup=function () {
+                document.onmousemove=null;
+                var oNear=findNearset(obj);
+                if(oNear){
+                	animate(obj,aPos[oNear.index]);
+                	animate(oNear,aPos[oNear.index]);
+                }
+                else{
+                	animate(obj,aPos[obj.index])
+                }
+            };
+            return false;  //中止程序运行
+        };
+    }
+
+    //碰撞检测
+    function cdTest(obj1,obj2){
+        var l1=obj1.offsetLeft + obj1.offsetWidth;
+        var r1=obj1.offsetLeft;
+        var t1=obj1.offsetHeight + obj1.offsetTop;
+        var b1=obj1.offsetTop;
+
+        var l2=obj2.offsetLeft + obj2.offsetWidth;
+        var r2=obj2.offsetLeft;
+        var t2=obj2.offsetHeight + obj2.offsetTop;
+        var b2=obj2.offsetTop;
+
+        if (l2<r1 || r2>l1 || t2<b1 || b2>t1){
+            return false;  //没碰到
+        }else{
+            return true;
+        }
+    }
+
+    function Dis(obj1,obj2){
+        var a=obj1.offsetLeft - obj2.offsetLeft;
+        var b=obj1.offsetTop - obj2.offsetTop;
+
+        return Math.sqrt(a*a+b*b);
+    }
+
+    //找到最近的 并且碰到的
+    function findNearset(obj){
+        var Mim=9999999999;
+        var Mindex=-1;
+
+        for(var i=0; i<aLi.length; i++){
+            if (obj == aLi[i]) continue;
+            if (cdTest(obj,aLi[i])){  //碰到了
+                //找最值
+                var dis=Dis(obj,aLi[i]);  //最近的
+
+                if(Mim > dis){
+                    Mim=dis;
+                    Mindex=i;
+                }
+            }
+        }
+
+        if (Mindex == -1){
+            return null;
+        }
+        else{
+            return aLi[Mindex];
+            //打到最近的 LI
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

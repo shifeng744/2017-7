@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#text{
+				width: 300px;
+				margin: 50px auto;
+			}
+			div{
+				width: 150px;
+				min-height: 100px;
+				background: pink;
+				position: absolute;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<p id="text">
+			打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的算东方闪电发的发的打算东方闪电发的发的打算东方闪电发的发的
+		</p>
+		<div id="box">
+			
+		</div>
+		
+		<script src="me.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var box=$("#box");
+			var text=$("#text");
+			text.onmouseup=function(ev){
+				var oEvent=ev || event;
+				show1(oEvent,text)
+				var text="";
+			if(window.getSelection)
+                {
+                    text = window.getSelection().toString();   // 转换为字符串
+                }
+                else
+                {
+                    text = document.selection.createRange().text;   // 
+				}
+                if(text)
+                {
+                	show1(oEvent,text)
+                	
+                }
+                
+				}
+			
+			function show1(oEvent,text){
+				box.style.left=oEvent.clientX + "px";
+				box.style.top=oEvent.clientY + "px";
+				box.style.display="block";
+				box.innerHTML=text;
+			}
+			window.onmousedown=function(){
+				box.style.display="none"
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+			ul,li,html,body{
+				width: 100%;
+				height: 100%;
+			}
+			ul>li{
+			
+			}
+			ol{
+				position: fixed;
+				right: 20px;
+				bottom: 20px;
+			}
+			ol>li{
+				width: 50px;
+				height: 50px;
+			
+				margin-bottom: 5px;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="ul">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<ol id="ol">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ol>
+		
+		<script src="me.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var aLi=$("#ul").children;
+			var aBtn=$("#ol").children;
+			var arr=["#ecc0ff","#ffc0cb","#c0d2ff","#c0ffd5","#fff7c0"];
+			var timer=null,iTarget=0;var key=0,timer1=null;
+			init();
+
+			//初始化init
+			function init(){
+				for(var i=0;i<aLi.length;i++){
+				aLi[i].style.background=arr[i];
+				aBtn[i].style.background=arr[i];
+				abtnOnclick(i)
+			}
+			}
+			
+			//点击事件
+			function abtnOnclick(i){
+				aBtn[i].id=i;
+				aBtn[i].onclick=function(){
+					iTarget=aLi[this.id].offsetTop;
+					buff()
+					key=this.id;
+				}
+				
+			}
+
+			
+			//缓冲动画
+			function buff(){
+			
+				clearInterval(timer);
+				timer=setInterval(function(){
+					H=scroll().top;
+					speed=(iTarget - H) /10;
+					speed=speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					//oUl.style.left=oUl.offsetLeft+speed+"px";
+					//console.log(speed)
+					window.scrollTo(0,H + speed)
+					if(speed ==0){
+						clearInterval(timer);
+				
+					
+				}
+			
+		},30)
+			}
+			//滚轮事件
+			
+			document.onmousewheel=function(ev){
+				clearTimeout(timer1);
+				timer1=setTimeout(function(){
+					var oEvent=ev || event;
+				if(oEvent.wheelDelta >0){
+					key--;
+					iTarget=window.innerHeight * key ;
+				}
+				else{
+					key++;
+					iTarget=window.innerHeight * key ;
+				}
+				buff()
+				},100)
+				
+			}
+		</script>
+	</body>
+</html>

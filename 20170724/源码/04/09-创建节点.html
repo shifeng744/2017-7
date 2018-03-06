@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <input type="text" id="text">
+    <input type="button" id="btn" value="发布">
+
+    <script>
+        var text=document.getElementById("text");
+        var btn=document.getElementById("btn");
+
+        var oUl=document.createElement("ul");  //创建
+        btn.parentNode.appendChild(oUl); //插到最后面
+
+        btn.onclick=function () {
+
+            if (!text.value) return;
+
+            var oLi=document.createElement("li");
+            oLi.innerText=text.value;
+            //oUl.insertBefore(oLi,oUl.children[0]);
+            //oUl.appendChild(oLi)
+            if (oUl.children.length){
+                oUl.insertBefore(oLi,oUl.children[0]);
+            }
+            else{
+                oUl.appendChild(oLi)
+            }
+            text.value="";
+        };
+    </script>
+</body>
+</html>

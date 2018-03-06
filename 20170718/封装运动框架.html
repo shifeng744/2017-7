@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				position: relative;
+				background: paleturquoise;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="btn200" value="到200" />
+		<input type="button" name="" id="btn800" value="到800" />
+		<div id="box"></div>
+		<script type="text/javascript">
+			var btn200=document.getElementById("btn200");
+			var btn800=document.getElementById("btn800");
+			var box=document.getElementById("box");
+			var timer=null;var speed=0;
+			 //调用
+			 btn200.onclick=function(){
+			 	animal(box,"left","200")
+			 }
+			 btn800.onclick=function(){
+			 	animal(box,"left","800")
+			 }
+			
+			
+			//运动
+			function animal(obj,attr,iTarger){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					var current=parseInt(getStyle(obj,attr));
+					speed= (iTarger-current)/10;
+					speed=speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+					obj.style[attr]=current + speed +"px"
+				},30)
+			}
+			
+			
+			
+			
+			
+			
+			
+			//获取css属性
+			function getStyle(obj,attr){
+				if(obj.currentStyle){
+					//ie
+					return obj.currentStyle[attr];
+				}
+				else{
+					return getComputedStyle(obj,null)[attr]
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="file"  id="btn"/>
+		<div id="box">1654</div>
+		<script type="text/javascript">
+			var btn=document.getElementById("btn");
+			var box=document.getElementById("box");
+			btn.onchange=function(){
+				var str=this.value;
+				var string1=str.substr(str.indexOf(".")+1).toLowerCase();
+				if(string1 == "jpg" || string1 == "png"){
+					box.innerHTML="格式正确"
+				}
+				else{
+										box.innerHTML="格式错误"
+				}
+			}
+		</script>
+	</body>
+</html>

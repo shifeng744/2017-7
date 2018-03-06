@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			textarea{
+				width: 300px;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<textarea name="" rows="" cols="" id="text1"></textarea>
+		<button id="btn">过滤</button>
+		<textarea name="" rows="" cols="" id="text2"></textarea>
+		<script type="text/javascript">
+			var text1=document.getElementById("text1")
+			var btn=document.getElementById("btn")
+			var text2=document.getElementById("text2")
+			btn.onclick=function(){
+				var re=/曌日|隆基|乾坤|尼玛|cao|GM/ig;
+				text2.value=text1.value.replace(re,"***")
+			}
+			
+			
+			/*
+			 
+			 * 女帝武曌日月凌空，上官婉儿称量天下，
+				李裹儿艳比花娇，五姓子勾心斗角，
+				太平公主难太平，李家三郎真隆基，
+				狄仁杰、张易之、冯小宝……
+				才子、佳人、屠狗辈！
+				红袖招，游侠儿，游走大唐天空下，
+				醉卧枕江山，谈笑望乾坤！
+				（元芳，你怎么看？）
+				（大人，我要追看！）
+			 * 
+			 * 
+			 * */
+			
+		</script>
+	</body>
+</html>

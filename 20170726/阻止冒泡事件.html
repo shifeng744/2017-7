@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width:150px;
+				height:150px;
+				background:red;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="显示"/ id="btn">
+		<div id="box"></div>
+		<script type="text/javascript">
+			var box=document.getElementById("box");
+			var btn=document.getElementById("btn");
+			btn.onclick=function(ev){
+				var oEvent=ev || event;
+				oEvent.cancelBubble=true;
+				box.style.display="block";
+			}
+			document.onclick=function(){
+				box.style.display="none"
+			}
+		</script>
+	</body>
+</html>

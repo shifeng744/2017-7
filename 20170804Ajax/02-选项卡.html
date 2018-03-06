@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				background: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="" value="按钮1" />
+		<input type="button" name="" id="" value="按钮2" />
+		<div class="box">
+			
+		</div>
+	</body>
+	
+	<script src="ajax.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var btn=document.getElementsByTagName("input");
+		var box=document.getElementsByClassName("box")[0];
+		console.log(box)
+		var arr=["txt1.txt","txt2.txt"]
+		for(var i=0;i<btn.length;i++){
+			btn[i].index=i;
+			btn[i].onclick=function(){
+				//console.log(arr[i])
+			ajax(arr[this.index],function(str){
+				box.innerHTML=str;
+				//alert(str)
+			})
+		}
+		}
+	</script>
+</html>

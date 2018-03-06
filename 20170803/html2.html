@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="box">
+			<h4>￥2499.00</h4>
+			<h1>Apple iPhone 6 32GB 金色</h1>
+			<p>11万+评价</p>		
+			<input type="button" name="btn" id="btn" value="加入购物车" />
+		</div>
+		
+		
+		<script type="text/javascript">
+			function shopping(data){
+				var data=data;
+				this.box=document.getElementsByClassName("box")[0];
+				this.price=this.box.children[0];
+				this.title=this.box.children[1];
+				this.evaluate=this.box.children[2];
+				this.joincat=this.box.children[3];
+			}
+			shopping.prototype={
+				//创建html
+				bindDom:function(){
+					this.price.innerHTML=data[0].price;
+					this.title.innerHTML=data[0].title;
+					this.evaluate.innerHTML=data[0].evaluate;
+				},
+				//加入购物车
+				Cart:function(){
+					this.joincat.onclick=function(){
+						alert("加入成功")
+					}
+					
+				},
+				//绑定
+				bindEvent:function(){
+					
+					this.bindDom();
+					this.Cart();
+					
+				}
+				
+			}
+			var data=[
+			{price:100,title:"手机",evaluate:"很好很嗨"}
+			];
+			var obj=new shopping();
+			obj.bindEvent();
+		</script>
+	</body>
+</html>

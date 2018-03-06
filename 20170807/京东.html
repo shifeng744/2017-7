@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			#box{
+				width: 800px;
+				margin: auto;
+				text-align: center;
+			}
+			#box ul li div{
+				width: 100%;
+				background: #ccc;
+				height: 800px;
+			}
+			#box2{
+				position: fixed;
+				right: 20px;
+				bottom: 100px;
+			}
+			#box2 ol li{
+				width: 50px;
+				height: 50px;
+				border: 1px solid red;
+				cursor: pointer;
+				text-align: center;
+				line-height: 50px;
+			}
+			#box2 ol li:hover{
+				background: dodgerblue;
+			}
+			.cur{
+				background: deepskyblue;
+			}
+			span{
+				vertical-align:middle;
+				text-align: center;
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				border: 1px solid blue;
+				position: fixed;
+				bottom: 30px;
+				cursor: pointer;
+			}
+			span:hover{
+				background: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+			<li>1
+				<div></div>
+			</li>
+			<li>2
+				<div></div>
+			</li>
+			<li>3
+				<div></div>
+			</li>
+			<li>4
+				<div></div>
+			</li>
+			<li>5
+				<div></div>
+			</li>
+
+		</ul>
+		</div>
+		
+		<div id="box2">
+			<ol>
+<!--				<li class="cur">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>-->
+				
+			</ol>
+			<span>返&nbsp;回顶&nbsp;部</span>
+		</div>
+	</body>
+	
+	<script src="../20170805/js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var $li=$("#box ul li");
+		
+		var $ol=$("#box2 ol");
+		$li.each(function(index,ele){
+			$ol.append('<li>'+(index+1)+'</li>')
+		})
+		var $btn=$("#box2 ol li");
+		$btn.eq(0).addClass("cur")
+		$(window).scroll(function(){
+			$li.each(function(index,ele){
+				
+				var H=$li.eq(index).offset().top;		
+				if($(document).scrollTop()>=H){
+					$btn.eq(index).addClass("cur").siblings().removeClass("cur");
+				}
+			})
+			
+		})
+		$btn.on("click",function(){
+			var index=$(this).index();
+			$("body,html").animate({
+				scrollTop:$li.eq(index).offset().top
+			},300)
+		})
+		$("span").on("click",function(){
+
+			$("body,html").animate({
+				scrollTop:0
+			},300)
+		})
+	</script>
+</html>

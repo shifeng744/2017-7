@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html{
+            width:100%;
+            height: 100%;
+        }
+        ul{
+            width:100%;
+            height: 100%;
+        }
+         ul li{
+             width:100%;
+             height: 100%;
+             background: red;
+         }
+         ol{
+             position: fixed;
+             top:20px;
+             left:20px;
+         }
+        ol li{
+            width:50px;
+            height: 50px;
+            border:1px solid #fff;
+            list-style:none;
+        }
+
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+</ul>
+<ol>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ol>
+
+<script>
+    var aLi=document.querySelectorAll("ul li");
+    var btn=document.querySelectorAll("ol li");
+    var iTarget=0,speed=0,timer=null;
+
+    var baArray=["red","black",'#02b03b','#3702b0','#a6b002'];
+    for(var i=0; i<baArray.length; i++){
+        aLi[i].style.background=baArray[i];
+        btn[i].style.background=baArray[i];
+        btn[i].index=i;
+        btn[i].onclick=function(){
+            iTarget=aLi[this.index].offsetTop; //目标点
+
+            //缓冲运动
+            //速度 = （ 目标点 -  要动的值 ） / 10
+            buff()
+        }
+    }
+
+    function buff(){
+        clearInterval(timer);
+        timer=setInterval(function(){
+            var scrollTop=document.body.scrollTop || document.documentElement.scrollTop;
+            speed = (iTarget - scrollTop) / 10;
+            //speed = 500 - 0     50
+            //speed = 500 - 0     45
+            speed =  speed >0 ? Math.ceil(speed) : Math.floor(speed);  //
+            scrollTo(0,speed+scrollTop);
+
+            if (speed==0)
+            {
+                clearInterval(timer)
+            }
+        },30)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 790px;
+				position: relative;
+				margin: 0 auto;
+				height: 280px;
+				border: 1px solid red;
+				overflow: hidden;
+				
+			}
+			#box-img{
+				width: 100%;
+				position: relative;
+			}
+			#box-img img{
+				
+				width: 100%;
+				
+			}
+			#box-img .Carousel{
+				position: absolute;
+			}
+			#box #box-btn .prev{
+				position: absolute;
+	            left: 0px;
+	            top:40%;
+	            z-index: 10;
+	            cursor: pointer;
+	            width: 50px;
+	        }
+	        #box #box-btn .next{
+	        	position: absolute;
+	            right: 0px;
+	            top:40%;
+	            z-index: 10;
+	            cursor: pointer;
+	            width: 50px;
+	            
+	        }
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box-img">
+				<div class="Carousel"><img src="img/wangyi3.jpg" alt="" /></div>
+				<div class="Carousel"><img src="img/wangyi2.jpg" alt="" /></div>
+				<div class="Carousel"><img src="img/wangyi4.jpg" alt="" /></div>
+			</div>
+			<div id="box-btn">
+				<img src="img/prev.png" class="prev" alt="">
+            	<img src="img/next.png" class="next" alt="">
+			</div>
+			
+			
+			
+			
+			
+			<script src="my.js" type="text/javascript" charset="utf-8"></script>
+			<script type="text/javascript">
+			var Carousel=document.getElementsByClassName("Carousel");
+				var json=[
+           
+                {width:390,left:0,top:79,z:3,opacity:80}, 
+                {width:400,left:200,top:74,z:5,opacity:100}, 
+                {width:390,left:400,top:79,z:4,opacity:80}
+          
+        ];
+        var prev=document.querySelector(".prev");
+        var next=document.querySelector(".next");
+        //滚动动画
+        next.onclick=function(){//数组1到原数组3的位置
+     
+        	json.push(json.shift());
+	       	for(var i=0;i<json.length;i++){
+	       		
+	       		animate(Carousel[i],{
+	                width:json[i].width,
+	                left:json[i].left,
+	                top:json[i].top,
+	                zIndex:json[i].z,
+	                opacity:json[i].opacity
+	            })
+       	}
+        }
+        prev.onclick=function(){
+   			
+   			
+   			
+        	json.unshift(json.pop());
+       		for(var i=0;i<json.length;i++){
+       			
+       		animate(Carousel[i],{
+                width:json[i].width,
+                left:json[i].left,
+                top:json[i].top,
+                zIndex:json[i].z,
+                opacity:json[i].opacity
+            })
+       	}
+        }
+        
+        //轮播
+  	   function fn1() {
+         	var timer=null;
+         	timer=setInterval(function(){
+         		json.push(json.shift());
+	       	for(var i=0;i<json.length;i++){
+	       		Carousel[i].style.width=json[i].width;
+	       		Carousel[i].style.top=json[i].top;
+	       		animate(Carousel[i],{
+	                width:json[i].width,
+	                left:json[i].left,
+	                top:json[i].top,
+	                zIndex:json[i].z,
+	                opacity:json[i].opacity
+	            })
+       	}
+         	},2000)
+        }
+        fn1();
+
+        
+        //打开页面弹出动画
+       	for(var i=0;i<json.length;i++){
+       		animate(Carousel[i],{
+                width:json[i].width,
+                left:json[i].left,
+                top:json[i].top,
+                zIndex:json[i].z,
+                opacity:json[i].opacity
+            })
+       	}
+			</script>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+

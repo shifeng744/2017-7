@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			function client(){
+				if(document.body.clientWidth || document.body.clientHeight)
+				{
+					return {
+						width:document.body.clientWidth,
+						height:document.body.clientheight
+					}
+				}
+				else{
+					return {
+						width:document.documentElement.clientWidth,
+						height:document.documentElement.clientheight
+					}
+				}
+			}
+			window.onresize=function(){
+				console.log(client().width);
+			}
+		</script>
+	</body>
+</html>

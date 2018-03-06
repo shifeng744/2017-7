@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="" id="btn" value="111" />
+		<script type="text/javascript">
+			function ShowValue(){
+				this.btn=document.getElementById("btn");
+				this.text="我"
+				var that=this;
+				this.btn.onclick=function(){
+					that.getValue()
+				}
+			}
+			ShowValue.prototype.getValue=function(){
+				alert(this.text)
+			}
+			
+			new ShowValue()
+		</script>
+	</body>
+</html>

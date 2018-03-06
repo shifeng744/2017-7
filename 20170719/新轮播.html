@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			ul{
+				width: 300px;
+				height: 200px;
+				border: 1px red solid;
+				margin: 50px auto;
+				list-style: none;
+				position: relative;
+				overflow: hidden;
+			}
+			ul li{
+				position: absolute;
+				left: 300px;
+				width: 300px;
+				height: 200px;
+				background: #ccc;
+			}
+			ul li:nth-child(2n){
+				background: deepskyblue;
+			}
+			div{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li style="background: pink;">3</li>
+			</ul>
+			
+			<input type="button" name="btn" id="btn1" value="上一张" />
+			<input type="button" name="btn" id="btn" value="下一张" />
+		</div>
+		
+	</body>
+</html>
+<script type="text/javascript" src="my.js">	</script>
+<script type="text/javascript">
+	var ul=document.querySelector("ul");
+	var btn=document.querySelector("#btn");
+	var btn1=document.querySelector("#btn1");
+	var li=document.querySelectorAll("li");
+	li[0].style.left="0px"
+	var key=0;
+	var ulWidth=ul.offsetWidth;
+	btn.onclick=function(){
+		animate(li[key],{left:-ulWidth})
+		
+		key++;
+		if(key>=3)
+		{
+			key=0;
+			
+		}
+		animate(li[key],{left:0})
+		li[key].style.left=ulWidth+"px";
+	
+	}
+	btn1.onclick=function(){
+		animate(li[key],{left:ulWidth})
+		
+		key--;
+		if(key<0)
+		{
+			key=2;
+			
+		}
+		console.log(key);
+		animate(li[key],{left:0})
+		li[key].style.left=-ulWidth+"px";
+		
+		
+	
+	}
+		
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

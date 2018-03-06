@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li class="bg"></li>
+    <li class="back"></li>
+    <li class="bg"></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<script>
+    //var bg=document.getElementsByClassName("bg");
+    //只要是获取多个  就是一个数组 : 对像
+   // bg[0].style.background="red";
+
+
+    function getClass(classname){
+        if (document.getElementsByClassName){  //正常浏览器
+            return document.getElementsByClassName(classname)
+        }
+        else{
+            //ie
+            var dom=document.getElementsByTagName("*");
+
+            var arr=[]; //存
+
+            for(var i=0; i<dom.length; i++){
+                if (dom[i].className == classname){
+                    arr.push(dom[i])  //push  标签
+                }
+            };
+
+            return arr;
+        }
+    }
+
+    var bg=getClass("bg");
+    bg[0].style.background="red";
+</script>
+</body>
+</html>

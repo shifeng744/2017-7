@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				width: 150px;
+				position: relative;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<img src="img/img.jpg"/ id="img">
+		
+		
+		
+		
+		<script type="text/javascript">
+		
+		var img1=document.getElementById("img");
+		var timer=null;var iTarger=0;var num=0;var speedx=5;var speedy=5;var x,y;
+	document.onclick=function(ev){
+			var oEvent=ev || event;
+			 x=oEvent.clientX - (img1.offsetWidth / 2);
+			 y=oEvent.clientY - (img1.offsetHeight / 2);
+			console.log(x)
+			//img1.style.left=x+"px";
+			//img1.style.top=y+"px";
+			fn()
+			
+		}
+		function fn(){
+			clearInterval(timer);
+				timer=setInterval(function(){
+					speedx=(x - img1.offsetLeft) /10;
+					speedy=(y - img1.offsetTop) /10;
+					speedx=speedx > 0 ? Math.ceil(speedx) : Math.floor(speedx);
+					speedy=speedy > 0 ? Math.ceil(speedy) : Math.floor(speedy);
+					img1.style.left=img1.offsetLeft+speedx+"px";
+					img1.style.top=img1.offsetTop+speedy+"px";
+				},30)
+		}
+				
+			
+				
+		</script>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul li{
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<ul id="oul">
+    <li>1111</li>
+    <li>1111</li>
+    <li>1111</li>
+    <li>1111</li>
+</ul>
+
+<script>
+    var aLi=document.getElementsByTagName("li");
+
+    var arr=["2017/7/26 12:00","2017/7/26 12:00","2017/7/26 12:00"];
+
+    function fn(){
+        //console.log(1)
+        var current=new Date();
+        var end=new Date("2018/1/1 12:00");
+
+        //得到秒
+        var second = (end.getTime() - current.getTime()) / 1000;
+
+        //得到天
+        var day = second / 60 / 60 / 24;
+
+        //得到小时
+        var h = second / 60 / 60 % 24 ;
+
+        //得到分
+        var m = second / 60  % 60 ;
+
+        //得到秒
+        var s = second % 60;
+
+        aLi[0].innerHTML="距离元旦还有"+ Math.floor(day) + "天" + parseInt(h)+"小时" + parseInt(m)+"分" + parseInt(s)+"秒"
+
+    }
+
+    setInterval(fn,1000)
+</script>
+
+</body>
+</html>

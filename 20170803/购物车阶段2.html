@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            margin: 50px;
+            overflow: hidden;
+
+        }
+        .box .title{
+            overflow: hidden;
+            background: #f4f4f4;
+        }
+        .box .title li{
+            float: left;
+            padding: 15px 0px;
+            width:180px;
+            text-align: center;
+        }
+        .box .content{
+            border-bottom: 1px solid #ccc;
+            overflow: hidden;
+        }
+        .box .content li{
+            float: left;
+            padding: 15px 0px;
+            width:180px;
+            text-align: center;
+        }
+        .box .content li .number{
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul class="title">
+        <li>
+            <input type="checkbox">
+            <span>全选</span>
+        </li>
+        <li>商品信息</li>
+        <li>单价</li>
+        <li>数量</li>
+        <li>金额</li>
+        <li>操作</li>
+    </ul>
+    <div class="content-list">
+        <!--<ul class="content">
+            <li>
+                <input type="checkbox">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </li>
+            <li>
+                我是商品名称
+            </li>
+            <li>
+                ￥55.00
+            </li>
+            <li>
+                <input type="button" value="-">
+                <input type="text" class="number" value="0">
+                <input type="button" value="+">
+            </li>
+            <li>
+                ￥110.00
+            </li>
+            <li>
+                删除
+            </li>
+        </ul>-->
+    </div>
+</div>
+<script>
+
+    function Cart(data){
+        this.data=data;
+        this.content_list=document.querySelector(".content-list");
+        this.plusJJ=document.getElementsByClassName("plus");  //加加
+        this.reduce=document.getElementsByClassName("reduce"); //减减
+    }
+
+    Cart.prototype={
+        //创建列表
+        creatHtml:function(data,index){
+            var str='';
+                str+=' <ul class="content" data-index="'+index+'">';
+                    str+='<li><input type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>';
+                    str+='<li>'+data.name+'</li>';
+                    str+='<li>'+data.price+'</li>';
+                    str+='<li><input type="button" value="-" class="reduce"><input type="text" class="number" value="'+data.num+'"><input type="button" value="+" class="plus"></li>';
+                    str+='<li>'+data.num*data.price+'</li>';
+                    str+='<li>删除</li>';
+                str+="</ul>";
+
+            return str;
+        },
+        bindHtml:function(){
+            var str="";
+            for(var i=0; i<data.length; i++){
+                str+=this.creatHtml(data[i],i);
+            }
+            this.content_list.innerHTML=str;
+            //都在这里绑定事件
+            this.Plus(); //加加
+            this.Reduce();//减减
+        },
+        //加加
+        Plus:function(){
+            var that=this;
+            for(var i=0; i<this.plusJJ.length; i++){
+                this.plusJJ[i].onclick=function () {
+                    //console.log(1)
+                    var index=this.parentNode.parentNode.getAttribute("data-index");
+                    //console.log(index)
+                    that.data[index].num+=1;
+                    //console.log(that.data[index].num);
+                    that.bindHtml();
+                }
+            }
+        },
+        //减减
+        Reduce:function () {
+            var that=this;
+            for(var i=0; i<this.reduce.length; i++){
+                this.reduce[i].onclick=function () {
+                    //console.log(1)
+                    var index=this.parentNode.parentNode.getAttribute("data-index");
+                    //console.log(index)
+                    if (that.data[index].num<=0) return; //下面代码不执行
+                    that.data[index].num-=1;
+                    //console.log(that.data[index].num);
+                    that.bindHtml();
+                }
+            }
+        }
+        //全选
+        //删除
+        //金额
+
+    };
+
+    var data=[
+        {name:"化装品1",price:55,num:1,sumPrice:110},
+        {name:"化装品2",price:56,num:2,sumPrice:111},
+        {name:"化装品3",price:57,num:1,sumPrice:112}
+    ];
+    var obj=new Cart(data);
+    obj.bindHtml();
+    console.log(obj)
+
+</script>
+
+</body>
+</html>

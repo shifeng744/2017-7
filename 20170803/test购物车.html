@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            margin: 50px;
+            overflow: hidden;
+
+        }
+        .box .title{
+            overflow: hidden;
+            background: #f4f4f4;
+        }
+        .box .title li{
+            float: left;
+            padding: 15px 0px;
+            width:180px;
+            text-align: center;
+        }
+        .box .content{
+            border-bottom: 1px solid #ccc;
+            overflow: hidden;
+        }
+        .box .content li{
+            float: left;
+            padding: 15px 0px;
+            width:180px;
+            text-align: center;
+        }
+        .box .content li .number{
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul class="title">
+        <li id="checkAll" data-check="全选">
+            <input type="checkbox">
+            <span >全选</span>
+        </li>
+        <li>商品信息</li>
+        <li>单价</li>
+        <li>数量</li>
+        <li>金额</li>
+        <li>操作</li>
+    </ul>
+    <div class="content-list">
+        <!--<ul class="content">
+            <li>
+                <input type="checkbox">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </li>
+            <li>
+                我是商品名称
+            </li>
+            <li>
+                ￥55.00
+            </li>
+            <li>
+                <input type="button" value="-">
+                <input type="text" class="number" value="0">
+                <input type="button" value="+">
+            </li>
+            <li>
+                ￥110.00
+            </li>
+            <li>
+                删除
+            </li>
+        </ul>-->
+    </div>
+    <div id="sumJ" style="float: right; margin-top: 20px; color: red;">合计:1111元</div>
+</div>
+<script>
+	 function Cart(data){
+	 	this.data=data;
+		this.content_list=document.querySelector(".content-list");
+        this.pushJJ=document.getElementsByClassName("plus");	
+        this.minus=document.getElementsByClassName("minus");
+        this.sumJ=document.getElementById("sumJ");
+        this.checkAll=document.getElementById("checkAll"); //全选
+        this.checkdgg=document.getElementsByClassName("checkdgg"); //全选
+	 }
+	   Cart.prototype={
+	   	creatHtml:function(data,i){
+            var str='';
+                str+=' <ul class="content" data-index="'+i+'">';
+                    str+='<li><input class="checkdgg" type="checkbox" '+(data.complated ? "checked" : "" )+'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>';
+                    str+='<li>'+data.name+'</li>';
+                    str+='<li>'+data.price+'</li>';
+                    str+='<li><input type="button" value="-" class="minus"><input type="text" class="number" value="'+data.num+'"><input type="button" value="+" class="plus"></li>';
+                    str+='<li>'+data.num*data.price+'</li>';
+                    str+='<li>删除</li>';
+                str+="</ul>";
+
+            return str;
+        },
+        bindHtml:function(){
+            var str="";
+            var sumALL=0;
+            for(var i=0; i<this.data.length; i++){
+                if (this.data[i].complated){
+                    sumALL+=this.data[i].num*this.data[i].price;  //求和
+                }
+
+                str+=this.creatHtml(data[i],i);
+
+            }
+            this.content_list.innerHTML=str;
+            this.plus01(); //加加
+            this.Minus();//煎建
+            this.sum(sumALL);//求和
+            this.checkBox();//全选
+            this.checkdggSum(); //选中
+	   	
+	   },
+	    plus01:function(){
+            var that=this;
+            for(var i=0; i<this.pushJJ.length; i++){
+                this.pushJJ[i].onclick=function () {
+                    var index=this.parentNode.parentNode.getAttribute("data-index");
+                    that.data[index].num+=1;
+                    that.bindHtml();
+                }
+            }
+        },
+       Minus:function(){
+            var that=this;
+            for(var i=0; i<this.minus.length; i++){
+                this.minus[i].onclick=function () {
+                    var index=this.parentNode.parentNode.getAttribute("data-index");
+                    if (that.data[index].num<=1) return;
+                    that.data[index].num-=1;
+
+                    that.bindHtml();
+                }
+            }
+        },
+        sum:function (sumALL) {
+            this.sumJ.innerHTML="合计："+sumALL
+        },
+        //全选
+        checkBox:function () {
+            var that=this;
+            this.checkAll.onclick=function(){
+                var off=this.getAttribute("data-check");
+                for(var i=0; i<that.data.length; i++){
+                    if (off == "全选"){
+                        that.data[i].complated=true;
+                        this.setAttribute("data-check","不选");
+                    }else{
+                        that.data[i].complated=false;
+                        this.setAttribute("data-check","全选");
+                    }
+
+
+                }
+                that.bindHtml();
+
+
+            }
+        },
+        checkdggSum:function(){
+            var that=this;
+            for(var i=0; i<this.checkdgg.length; i++){
+                this.checkdgg[i].onclick=function () {
+                    var index=this.parentNode.parentNode.getAttribute("data-index");
+                    that.data[index].complated= !that.data[index].complated;
+                    that.bindHtml();
+                }
+            }
+        }
+	  }; 
+    var data=[
+        {name:"化装品1",price:55,num:1,sumPrice:110, complated:false},
+        {name:"化装品2",price:56,num:2,sumPrice:111, complated:true},
+        {name:"化装品3",price:57,num:1,sumPrice:112, complated:false}
+    ];	   
+	var obj=new Cart(data);
+    obj.bindHtml(); //成html
+    console.log(obj)  
+</script>
+</body>
+</html>

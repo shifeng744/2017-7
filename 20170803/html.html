@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="container">
+			<div class="box">
+				<h4>￥2499.00</h4>
+				<h1>Apple iPhone 6 32GB 金色</h1>
+				<p>11万+评价</p>		
+				<input type="button" name="btn" id="btn" value="加入购物车" />
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript">
+			function shopping(data){
+				this.data=data;
+				this.container=document.getElementById("container");
+				this.btn=this.container.getElementsByClassName("btn");
+
+			}
+			shopping.prototype={
+				//绑定html
+				bindDom:function(obj){
+					//console.log(1)
+					var str='<div class="box">'+
+							'<h4>'+obj.price+'</h4>'+
+							'<h1>'+obj.title+'</h1>'+
+							'<p>'+obj.evaluate+'</p>'+	
+							'<input type="button" name="btn" class="btn" value="加入购物车" />'+
+							'</div>';
+							
+							return str;
+				},
+				//创建html
+				creathtml:function(){
+					var str="";
+					for(var i=0;i<this.data.length;i++){
+						str+=this.bindDom(this.data[i])
+					}
+					this.container.innerHTML=str;
+				},
+				//加入购物车
+				Cart:function(){
+					for(var i=0; i<this.btn.length; i++){
+                this.btn[i].onclick=function(){
+                    alert("成功加入")
+                }
+            }
+
+					
+				},
+				//绑定
+				bindEvent:function(){
+					
+					//this.bindDom();
+					this.creathtml();
+					this.Cart();
+					
+				}
+				
+			}
+			var data=[
+				{price:100,title:"手机",evaluate:"很好很嗨"},
+				{price:1001,title:"手机1",evaluate:"很好很嗨1"},
+				{price:1002,title:"手机2",evaluate:"很好很嗨2"},
+				{price:1003,title:"手机3",evaluate:"很好很嗨3"}
+			];
+			var obj=new shopping(data);
+			obj.bindEvent();
+		</script>
+	</body>
+</html>

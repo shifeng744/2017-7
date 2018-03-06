@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			window.onresize=jieliu(function(){
+				console.log(window.innerWidth)
+			},300);
+			function jieliu(fn,time){
+				var timer=null
+				return function(){
+					clearTimeout(timer);
+					timer=setTimeout(fn,time)
+				}
+			}
+		</script>
+	</body>
+</html>

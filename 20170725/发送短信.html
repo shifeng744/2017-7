@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="" id="text" value="" />
+		<input type="button" name="" id="btn" value="发送短信"  />
+		<script type="text/javascript">
+		var timer=null;var key=5;
+			btn.onclick=function(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					
+					if(key<=1)
+					{
+						
+						key=5;
+						btn.value="重新发送短信";
+						btn.disabled=false;
+						clearInterval(timer)
+					}
+					else{
+						key--;
+						btn.value="剩余"+key+"秒"
+						btn.disabled=true;
+					
+					}
+				},1000)
+				
+			}
+		</script>
+	</body>
+</html>

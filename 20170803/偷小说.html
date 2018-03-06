@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			textarea{
+				width: 300px;
+				height: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<textarea name="" rows="" cols="" id="text1"></textarea>
+		<button id="btn">过滤</button>
+		<textarea name="" rows="" cols="" id="text2"></textarea>
+		<script type="text/javascript">
+			var text1=document.getElementById("text1")
+			var btn=document.getElementById("btn")
+			var text2=document.getElementById("text2")
+			btn.onclick=function(){
+				var re=/<[^<>]+>/g;
+				text2.value=text1.value.replace(re,"")
+			}
+			
+			
+			/*
+			 
+			 *<div class="para" label-module="para">“小说”一词最早出现于《庄子·<a
+			 * target="_blank" href="/item/%E5%A4%96%E7%89%A9">外物</a>》：「饰
+			 * 小说以干县令，其于大达亦远矣。」庄子所谓的「小说」，是指<a target="_b
+			 * lank" href="/item/%E7%90%90%E7%A2%8E">琐碎</a>的言论，与今日小说观
+			 * 念相差甚远。直至东汉<a target="_blank" href="/item/%E6%A1%93%E8%B0%
+			 * AD">桓谭</a>《<a target="_blank" href="/item/%E6%96%B0%E8%AE%BA">新
+			 * 论</a>》：「小说家合残丛小语，近取譬喻，以作短书，治身理家，有可观之辞
+			 * 。」<a target="_blank" href="/item/%E7%8F%AD%E5%9B%BA">班固</a>《<a 
+			 * target="_blank" href="/item/%E6%B1%89%E4%B9%A6">汉书</a>．艺文志》将
+			 * 「<a target="_blank" href="/item/%E5%B0%8F%E8%AF%B4%E5%AE%B6/3959" d
+			 * ata-lemmaid="3959">小说家</a>」列为十家之后，其下的定义为：「小说家者流
+			 * ，盖出于稗官，街谈巷语，<a target="_blank" href="/item/%E9%81%93%E5%90
+			 * %AC%E9%80%94%E8%AF%B4">道听途说</a>[4]之所造也。」才稍与今日小说的意义
+			 * 相近。而中国小说最大的特色，便自宋代开始具有<a target="_blank" href="/i
+			 * tem/%E6%96%87%E8%A8%80%E5%B0%8F%E8%AF%B4">文言小说</a>与白话小说两种不
+			 * 同的小说系统。文言小说起源于先秦的街谈巷语，是一种小知小道的纪录。在历经
+			 * <a target="_blank" href="/item/%E9%AD%8F%E6%99%8B%E5%8D%97%E5%8C%97
+			 * %E6%9C%9D">魏晋南北朝</a>及隋唐长期的发展，无论是题材或人物的描写，文
+			 * 言小说都有明显的进步，形成笔记与传奇两种小说类型。而白话小说则起源于唐
+			 * 宋时期说话人的话本，<a target="_blank" href="/item/%E6%95%85%E4%BA%
+			 * 8B/7332021" data-lemmaid="7332021">故事</a>的取材来自民间，主要表现
+			 * 了百姓的生活及思想意识。但不管文言小说或白话小说都源远流长，呈现各自不
+			 * 同的艺术特色。</div>
+			 * 
+			 * 
+			 * 
+			 * */
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		#box{
+			width: 1000px;
+			margin: 0 auto;
+		}
+			ul{
+				width: calc(25% - 20px);
+				
+				
+				
+				float: left;
+				box-sizing: border-box;
+				margin: 10px;
+				box-sizing: border-box;
+			}
+			ul li+li{
+				margin-top: 10px;
+			}
+			ul>li.h200{
+				height: 200px;
+				background: #ccc;
+			}
+			ul>li.h180{
+				height: 180px;
+				background: #ccc;
+			}
+			ul>li.h350{
+				height: 350px;
+				background: #ccc;
+			}ul>li.h70{
+				height: 70px;
+				background: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<!--<li class="h350"></li>
+				<li class="h180"></li>
+				<li class="h70"></li>
+				<li class="h200"></li>-->
+			</ul>
+			<ul></ul>
+			<ul></ul>
+			<ul></ul>
+			
+			<script type="text/javascript">
+			function appendLi(){
+				var oUl=document.querySelectorAll("#box > ul");
+				var oUl_1=oUl[0].offsetHeight;
+				var oUl_2=oUl[1].offsetHeight;
+				var oUl_3=oUl[2].offsetHeight;
+				var oUl_4=oUl[3].offsetHeight;
+				var arr=["h350","h180","h70","h200"]
+				var minHeight=Math.min(oUl_1,oUl_2,oUl_3,oUl_4);//console.log(minHeight)
+				var needUl;
+				for(var i=0;i<oUl.length;i++){
+					if(oUl[i].offsetHeight == minHeight){
+						needUl = oUl[i];
+					}
+					var oLi=document.createElement("li");
+					oLi.className=arr[radomClass()];
+					
+				};
+				needUl.appendChild(oLi);
+			}
+			
+			function radomClass(){
+				return Math.floor(Math.random()*4)
+			}
+			for(var i=0;i<20;i++){
+				appendLi();
+			}
+			window.onscroll=function(){
+				var a=document.documentElement.offsetHeight - document.documentElement.clientHeight;
+				var b=document.body.scrollTop || document.documentElement.scrollTop;
+				a=Math.ceil(a);
+				b=Math.ceil(b);
+				console.log(a+ ' ' +b)
+				if(a == b){
+					window.scrollTo(0,a-30);
+					for(var i=0; i<10; i++){
+			            appendLi();
+			        }
+				}
+			}
+			</script>
+		</div>
+	</body>
+</html>

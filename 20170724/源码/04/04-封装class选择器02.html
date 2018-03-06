@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<ul>
+    <li class="bg"></li>
+    <li class="bg back"></li>
+    <li class="bg"></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<script>
+    //var bg=document.getElementsByClassName("bg");
+    //只要是获取多个  就是一个数组 : 对像
+   // bg[0].style.background="red";
+
+
+    /*var str="bg bg back bg";
+    var arr=str.split(" ");
+
+    console.log(arr)*/
+
+    function getClass(classname){
+        if (document.getElementsByClassName){  //正常浏览器
+            return document.getElementsByClassName(classname)
+        }
+        else{
+            //ie
+            var dom=document.getElementsByTagName("*");
+
+            var arr=[]; //存
+
+            for(var i=0; i<dom.length; i++){
+                var textArray=dom[i].className.split(" ");
+
+                for(var j=0; j<textArray.length; j++){
+                    if (textArray[j] == classname){
+                        arr.push(dom[i]);
+                    }
+                }
+                               //"bg", "bg back","bg"
+                /*if (dom[i].className == classname){
+                    arr.push(dom[i])  //push  标签
+                }*/
+            };
+
+            return arr;
+        }
+    }
+
+    var bg=getClass("bg");
+    bg[0].style.background="red";
+    bg[1].style.background="red";
+</script>
+</body>
+</html>

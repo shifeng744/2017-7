@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				background: paleturquoise;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="btn200" value="到200" />
+		<input type="button" name="" id="btn800" value="到800" />
+		<div id="box"></div>
+		<script type="text/javascript">
+			var btn200=document.getElementById("btn200");
+			var btn800=document.getElementById("btn800");
+			var box=document.getElementById("box");
+			btn200.onclick=move(-10);
+			btn800.onclick=move(10);
+			
+			function move(speed){
+				return function(){
+				box.style.left=speed+box.offsetLeft + "px"
+			}
+			}
+		</script>
+	</body>
+</html>

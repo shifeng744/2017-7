@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid red;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: none;
+}
+		</style>
+	</head>
+	<body style="height: 2000px;">
+ 	<div id="triangle-up">
+	</div>
+	<script src="me.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var btn=$("#triangle-up")
+		var scrollTop=scroll().top;
+		var H=0,timer,iTarger=0,speed=0;
+		window.onscroll=function(){
+			
+			if(scroll().top > H){
+				show("#triangle-up")
+			}
+			else{
+				hide("#triangle-up")
+			}
+		}
+		btn.onclick=function(){
+			
+				clearInterval(timer);
+				timer=setInterval(function(){
+					H=scroll().top;
+					speed=(iTarger - H) /10;
+					speed=speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					//oUl.style.left=oUl.offsetLeft+speed+"px";
+					window.scrollTo(0,H + speed)
+					if(speed ==0){
+						clearInterval(timer);
+					}
+					console.log(speed)
+				},30)
+			
+		}
+		
+	</script>
+	</body>
+</html>

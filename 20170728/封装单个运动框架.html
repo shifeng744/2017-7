@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				position: relative;
+				background: greenyellow;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="btn200" value="到200" />
+		<input type="button" name="" id="btn800" value="到800" />
+		<div id="box"></div>
+		<script src="me.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var btn200=document.getElementById("btn200");
+			var btn800=document.getElementById("btn800");
+			var box=document.getElementById("box");var speed=0,timer=null;
+			btn200.onclick=function(){
+				animal(box,"left",200)
+			}
+			btn800.onclick=function(){
+				animal(box,"left",800)
+			}
+			function animal(obj,attr,iTarget){
+				clearInterval(timer);
+				timer=setInterval(function(){
+				var current=parseInt(getStyle(obj,attr));
+				speed=(iTarget - current)/10;
+				speed=speed > 0 ? Math.ceil(speed) : Math.floor(speed)
+				obj.style[attr]=current + speed + "px"
+				},30)
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+
+			
+		</script>
+	</body>
+</html>

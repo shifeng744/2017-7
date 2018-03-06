@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .box{
+            padding-top: 50px;
+            max-width:1000px;
+            margin: auto;
+        }
+        .box > ul{
+            width:calc(25% - 30px);
+            /*min-height: 300px;*/
+            /*border: 1px solid #ccc;*/
+            float: left;
+            box-sizing: border-box;
+        }
+        .box ul + ul{
+            margin-left: 40px;
+        }
+        .box > ul > li.h200{
+            background: #ccc;
+            height:200px;
+        }
+
+        .box > ul > li.h70{
+            background: #ccc;
+            height:70px;
+        }
+
+        .box > ul > li.h300{
+            background: #ccc;
+            height:300px;
+        }
+
+        .box > ul > li.h180{
+            background: #ccc;
+            height:180px;
+        }
+        .box ul li+li{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <ul>
+            <!--<li class="h200"></li>
+            <li class="h70"></li>
+            <li class="h300"></li>
+            <li class="h180"></li>-->
+        </ul>
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+    </div>
+
+    <script src="my.js"></script>
+    <script>
+        //创建Li
+
+        function appendLi(){
+            var aUl=document.querySelectorAll(".box > ul");
+            var arrClass=["h200","h70","h300","h180"];
+            var ul_1=aUl[0].offsetHeight;
+            var ul_2=aUl[1].offsetHeight;
+            var ul_3=aUl[2].offsetHeight;
+            var ul_4=aUl[3].offsetHeight;
+
+            var minUlHeight=Math.min(ul_1,ul_2,ul_3,ul_4);  //高度最小的UL
+            //console.log(minUlHeight);
+
+            var minoUl;
+            for(var i=0; i<aUl.length; i++){
+                if (aUl[i].offsetHeight == minUlHeight){
+                    minoUl=aUl[i];
+                };
+
+                var aLi=document.createElement("li");
+                aLi.className=arrClass[radomClass()];
+            };
+            minoUl.appendChild(aLi);
+        }
+
+        //获取随机数
+        function radomClass() {
+            return Math.floor(Math.random()*4);
+        }
+       // console.log(radomClass())
+
+        for(var i=0; i<20; i++){
+            appendLi();
+        }
+
+
+        window.onscroll=function () {
+
+            //文档的高度 - 屏幕的高度  ==   scrollTop    到度部了
+            var a =  document.documentElement.offsetHeight - document.documentElement.clientHeight;
+            var b= document.body.scrollTop || document.documentElement.scrollTop;
+            console.log("a",a);
+            console.log("b",b);
+			a=Math.floor(a);
+			b=Math.floor(b);
+            if (a==b){
+
+                window.scrollTo(0,a-30);
+			        for(var i=0; i<10; i++){
+			            appendLi();
+			        }
+
+            }
+            //appendLi();
+        }
+
+
+    </script>
+
+<script>
+
+</script>
+
+</body>
+</html>

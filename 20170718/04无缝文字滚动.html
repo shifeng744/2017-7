@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			#box{
+				width: 100%;
+				height: 300px;
+				background: rgba(0,0,0,.5);
+				margin-top: 50px;
+				overflow: hidden;
+				position: relative;
+			}
+			#btnctr{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				
+			}
+			#inner{
+				position: relative;
+				top: 0px;
+			}
+			#btnctr{
+				position: absolute;
+				 left:50%;
+            	margin-left: -20px;
+				top: 260px;
+			}
+			#btnctr li{
+				width: 10px;
+				height: 10px;
+				background-color: black;
+			border-radius: 100%;
+			display: inline-block;
+				
+			}
+			ul li{
+				display: block;
+				line-height: 300px;
+				text-align: center;
+				font-size: 50px;
+				font-style:italic;
+				font-weight: bold;
+			}
+			.cur{
+				background-color: white !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul id="inner">
+				<li>创中心凹一切可萌</li>
+				<li>是是的撒我的撒大声地</li>
+			</ul>
+			<ol id="btnctr">
+				<li class="cur"></li>
+				<li></li>
+
+
+			</ol>
+		</div>
+		<script type="text/javascript">
+		var inner=document.querySelector("#box #inner");
+		var ali=inner.children;
+		var aLi=document.querySelectorAll("ol li");
+		var box=document.querySelector("#box");
+		var timer2=null;var key=0;var timer=null;var speed=0;var iTarger=0;
+		inner.innerHTML+=inner.innerHTML;
+		
+		textAuto();
+		bindcur();
+		texthover();
+			//轮播
+			function textAuto(){
+				clearInterval(timer2);
+				timer2=setInterval(function(){
+					
+					key=++key % ali.length; //console.log(key)
+					if(key>=ali.length-1)
+					{
+						key=1;
+						inner.style.top="0px"
+					}
+					iTarger=-key*box.offsetHeight;
+					buff();
+					for(var i=0; i<aLi.length; i++)
+                    {
+                        aLi[i].className="";
+                    }
+                    aLi[key%aLi.length].className="cur";
+				},2000)
+			}
+			//缓冲
+			function buff(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					speed=(iTarger-inner.offsetTop)/10;
+					speed=speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					inner.style.top=speed+inner.offsetTop+"px"
+					if (speed==0)
+                {
+                    clearInterval(timer)
+                }
+				},30)
+			}
+			//点击按钮
+			function bindcur(){
+				var btnctr=document.querySelector("#btnctr");
+				var btn=btnctr.children;
+				
+				for(var i=0;i<btn.length;i++)
+				{
+					btn[i].index=i;
+					btn[i].onclick=function(){
+						for(var i=0;i<btn.length;i++)
+						{
+							btn[i].className=""
+						}
+						this.className="cur";
+						key=this.index;
+						iTarger=-key*box.offsetHeight;
+						buff()
+					}
+				}
+			}
+			//移出移入
+			function texthover(){
+				var box=document.querySelector("#box");
+				box.onmouseover=function(){
+					clearInterval(timer2)
+				}
+				box.onmouseout=function(){
+					textAuto()
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+

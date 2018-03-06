@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		body{
+			background: black;
+		}
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				
+			}
+			ul{
+				width: 690px;
+				margin: 50px auto;
+				/*overflow: hidden;*/
+			}
+			ul li{
+				float: left;
+				width: 200px;
+				padding: 10px 10px 5px 10px;
+				background-color: white;
+				margin: 5px;
+				transition: all 0.8s;
+				position: relative;
+				z-index: 1;
+			}
+			ul li:nth-child(2n){
+				transform: rotate(8deg);
+			}
+			ul li:nth-child(2n+1){
+				transform: rotate(-8deg);
+			}
+			ul li:hover{
+				z-index: 2;
+				transform: scale(1.3) rotate(0deg);
+			}
+			
+			ul li img{
+				width: 100%;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li><img src="img/works01.jpg"/></li>
+			<li><img src="img/works02.jpg"/></li>
+			<li><img src="img/works03.jpg"/></li>
+			<li><img src="img/works04.jpg"/></li>
+			<li><img src="img/works05.jpg"/></li>
+			<li><img src="img/works06.jpg"/></li>
+		</ul>
+		
+		
+		
+		
+		
+	</body>
+</html>

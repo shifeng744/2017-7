@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			ul{
+				list-style: none;
+				margin: 50px auto;
+				width:950px;
+			}
+			ul li{
+				width: 150px;
+				height: 350px;
+				border: 1px red solid;
+				float: left;
+				box-sizing:border-box;
+				//background: url(img/1.jpg);
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script type="text/javascript" src="my.js"></script>
+		<script type="text/javascript">
+			var aLi=document.querySelectorAll("ul li");
+			var arr=["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"]
+			for(var i=0;i<aLi.length;i++)
+			{
+				aLi[i].style.background="url(img/"+arr[i]+")";
+				aLi[i].onmouseover=function(){
+					for(var i=0;i<aLi.length;i++)
+						{
+							animate(aLi[i],{width:50})
+						}
+					animate(this,{width:750})
+				}
+			}
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+

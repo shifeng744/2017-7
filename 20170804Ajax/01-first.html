@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" name="" id="btn" value="按钮" />
+	</body>
+	
+	<script src="ajax.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var btn=document.getElementById("btn");
+		btn.onclick=function(){
+			ajax("first.json?id="+new Date().getTime(),function(str){
+				alert(str)
+			})
+		}
+	</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#box{
+				width: 200px;
+				height: 200px;
+				background: palevioletred;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" name="" id="btn" value="显示" />
+		<div id="box">
+			
+		</div>
+		
+		
+		
+		<script type="text/javascript">
+			function showhidde(){
+				this.btn=document.getElementById("btn");
+				this.box=document.getElementById("box");
+				var that=this;
+				this.btn.onclick=function(){
+					that.show();
+					console.log(that)
+				}
+			}
+			showhidde.prototype.show=function(){
+				if(this.box.style.display=="block"){
+					this.box.style.display="none";
+					this.btn.value="显示"
+				}
+				else{
+					this.box.style.display="block"
+					this.btn.value="隐藏"					
+					
+				}
+
+			}
+			new showhidde()
+		</script>
+	</body>
+</html>

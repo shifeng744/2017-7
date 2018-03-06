@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			position: relative;
+			margin: 20px 0 0 20px;
+		}
+			#box .small{
+				border: 1px solid black;
+				width: 350px;
+				
+				height: 350px;
+			}
+			#big{
+				width: 450px;
+				height: 450px;
+				position: absolute;
+				top: 0;
+				left: 370px;
+				border: 1px solid black;
+				overflow: hidden;
+				display: none;
+			}
+			#bar{
+				width: 100px;
+				height: 100px;
+				background: yellow;
+				opacity: .6;
+				position: absolute;
+				top: 0;
+				left: 0;
+				cursor: move;
+				display: none;
+			}
+			#img{
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div class="small">
+				<img src="img/001.jpg"/>
+				<span id="bar">
+					
+				</span>
+			</div>
+			<div id="big">
+				<img src="img/0001.jpg"/ id="img">
+			</div>
+		</div>
+		<script type="text/javascript">
+			function $(ele){return document.querySelector(ele)};
+			var small=$(".small");
+			var bar=$("#bar");
+			var img=$("#img");
+			var big=$("#big");
+			//var x,y=0;
+			small.onmouseover=function(){
+				bar.style.display="block";
+				big.style.display="block";
+			}
+			small.onmouseout=function(){
+				bar.style.display="none";
+				big.style.display="none";
+			}
+			small.onmousemove=function (ev){
+				var oEvent=ev || event;
+				var x=oEvent.clientX - small.parentNode.offsetLeft - bar.offsetWidth / 2;
+				var y=oEvent.clientY - small.parentNode.offsetTop - bar.offsetHeight / 2;
+				if(x < 0){
+					x = 0;
+				}
+				else if(x > 250)
+				{
+					x =250;
+				}
+				if(y < 0){
+					y = 0;
+				}
+				else if(y > 250){
+					y = 250;
+				}
+				bar.style.left=x + "px";
+				bar.style.top=y + "px";
+				img.style.left=big.offsetWidth / small.offsetWidth * -x + "px";
+				img.style.top=big.offsetHeight / small.offsetHeight * -y + "px";
+				//console.log("x:"+x+"y:"+y)
+				
+				
+			}
+			
+		</script>
+	</body>
+</html>

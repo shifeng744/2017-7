@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body,html{
+			width: 100%;
+			height: 100%;
+		}
+		ul{
+			width: 100%;
+			height: 100%;
+		}
+			ul,li{
+				list-style: none;
+			}
+			ol{
+				position: fixed;
+				top: 20px;
+				left: 20px;
+			}
+			ol li{
+				border: 1px solid #fff;
+				width: 50px;
+				height: 50px;
+			}
+			ul li{
+				
+				width: 100%;
+			height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+		<ol>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ol>
+		
+		<script type="text/javascript">
+			var arr=["red","green","blue","black","yellow"]
+			var aLi=document.querySelectorAll("ul li");
+			var abtn=document.querySelectorAll("ol li");
+			var speed=0,timer=null,iTarger=0;
+			for(var i=0;i<arr.length;i++){
+				
+				abtn[i].index=i;
+				aLi[i].style.background=arr[i];
+				abtn[i].style.background=arr[i];
+				abtn[i].onclick=function(){
+				iTarger=aLi[this.index].offsetTop;
+				buff();
+			}
+			}
+			function buff(){
+				clearInterval(timer);
+				timer=setInterval(function(){
+					var scrollTop=document.body.scrollTop || document.documentElement.scrollTop;
+					speed=(iTarger-scrollTop)/10;
+					speed=speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					scrollTo(0,speed+scrollTop);
+					//console.log(speed)
+					if(speed==0)
+					{
+						clearInterval(timer)
+					}
+				},30)
+			}
+		</script>
+	</body>
+</html>
+
+
+

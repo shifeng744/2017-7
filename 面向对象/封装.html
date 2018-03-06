@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			function cat(name,color){
+		
+					this.name=name;
+					this.color=color
+				
+			}
+			
+			cat.prototype.type="猫科动物";
+			cat.prototype.eat=function(){alert("吃老鼠")};
+			var cat1=new cat("大毛","黄色");
+			var cat2=new cat("二毛","黑色");
+//			alert(cat1.type)
+//			cat1.eat()
+for(var prop in cat1) { alert("cat1["+prop+"]="+cat1[prop]); }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width:210px;
+            margin:50px auto;
+        }
+        .box > div{
+            width:210px;
+            height: 200px;
+            background: #ccc;
+            word-break: break-all;
+            display: none;
+        }
+        .box > input.cur{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <input class="cur" type="button" value="头条">
+    <input type="button" value="八卦">
+    <input type="button" value="看天下 ">
+    <input type="button" value=" 社会 ">
+
+    <div style="display: block">11111111111111111111111111111111aasdfdsfdssdfds</div>
+    <div>222222222222222222222222</div>
+    <div>333333333333333333333333333333</div>
+    <div>4444444444444444444444444444444444</div>
+</div>
+
+
+
+    <script>
+        function tab(id){
+        	this.aBtn=document.querySelectorAll(id);
+        	this.aDiv=document.querySelectorAll(".box div");
+        	this.show()
+        }
+        tab.prototype.show=function(){
+        	var that=this;
+        	for(var i=0;i<this.aBtn.length;i++){
+        		this.aBtn[i].index=i;
+        		this.aBtn[i].onclick=function(){
+        			for(var i=0;i<that.aBtn.length;i++){
+        				that.aBtn[i].className="";
+        				that.aDiv[i].style.display="none"
+        			}
+        			this.className="cur";
+        			that.aDiv[this.index].style.display="block";
+        		}
+        	}
+        	
+        	
+        }
+		var obj=new tab(".box input");
+	
+		//console.log(obj)
+    </script>
+</body>
+</html>

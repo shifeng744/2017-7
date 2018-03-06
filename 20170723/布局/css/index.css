@@ -1,0 +1,306 @@
+/*清除样式*/
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+body,ul,p,a,h1,h2,h3,h4,h5,h6,ul,li{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+.container >.title > h1{
+	font-size:22px;
+}
+.container >.title > p{
+	font-size: 12px;
+}
+/*工具*/
+.container{
+	width: 1200px;
+	margin: auto;
+}
+p{
+	font-size: 12px;
+}
+
+
+
+
+/*样式*/
+.header{
+	width: 100%;
+	background: url(../img/header-bg.jpg) no-repeat;
+	min-height: 720px;
+	background-size: cover;
+	overflow: hidden;
+}
+.header > .container > .nav{
+	margin-top: 60px;
+}
+.header > .container > .nav .logo_text{
+	line-height: 40px;
+	font-size: 18px;
+	color: white;
+	font-weight: bold;
+	margin-left: 20px;
+}
+.header > .container > .nav >.logo{
+	width: 40px;
+	float: left;
+}
+.header > .container > .nav > .list{
+	float: right;
+}
+.header > .container > .nav > .list > li{
+	display: inline-block;
+}
+.header > .container > .nav > .list > li > a{
+	display: block;
+	font-size: 15px;
+	color: white;
+	padding: 0 15px 0 15px;
+	margin-left: 30px;
+	font-weight: 500;
+}
+.header > .container > .banner{
+	width: 620px;
+	margin: auto;
+	text-align: center;
+	margin-top: 124px;
+}
+.header > .container > .banner > .banner-h1{
+	font-size: 21px;
+	color: white;
+	margin: 24px 0 32px 0 ;
+}
+.header > .container > .banner > .banner-h2{
+	font-size: 33px;
+	color: white;
+}
+.header > .container > .banner > .banner-line{
+	margin-top: 30px;
+	border: 1px solid #757d84;
+	width: 600px;
+}
+.header > .container > .banner > p{
+	font-size: 17px;
+	color: white;
+	margin-top: 32px;
+	margin-bottom: 53px;
+}
+.header > .container > .banner .btn a{
+	font-size: 17px;
+	color: white;
+	padding: 25px 60px;
+	display: inline-block;
+	font-weight: bold;
+	margin: 0 5px;
+}
+.header > .container > .banner .btn .sing-up{
+	background: #b61a22;
+	border: 1px solid #b61a22;
+}
+.header > .container > .banner .btn .sing-login{
+
+	border: 1px solid #fff;
+}
+/*====page01=======*/
+.page01{
+	text-align: center;
+	padding-bottom: 100px;
+}
+.page01 > .container >.title{
+	margin-top:105px;
+	margin-bottom: 54px;
+}
+.page01 > .container >.title > h1{
+	margin-bottom: 17px;
+}
+.page01 > .container > .circular span{
+	display: block;
+	width: 140PX;
+	height: 140PX;
+	border-radius: 50%;
+	line-height: 140px;
+	font-size: 32px;
+	color: white;
+}
+.page01 > .container > .circular .UI{
+	background:#ca2b32 ;
+	opacity: .9;
+	display: inline-block;
+	margin-right: -15px;
+}
+.page01 > .container > .circular .WEB{
+	background:#34b0c8 ;
+	opacity: .9;
+	display: inline-block;
+	margin-left: -15px;
+}
+.page01 > .container > .content{
+	margin-top: 50px;
+}
+.page01 > .container > .content > .content-list{
+	display: inline-block;
+}
+.page01 > .container > .content > .content-list li{
+	margin-bottom: 40px;
+	position: relative;
+}
+.page01 > .container > .content > .left{
+	margin-right: 40px;
+	position: relative;
+	padding-right: 30px;
+}
+.page01 > .container > .content > .left li:after{
+	content: "";
+	display: block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #c4141b;
+	position: absolute;
+	top: 0;
+	right: -35px;
+	z-index: 100;
+}
+.page01 > .container > .content > .right{
+	margin-left: 40px;
+	position: relative;
+	padding-left: 30px;
+}
+.page01 > .container > .content > .right li:after{
+	content: "";
+	display: block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #c4141b;
+	position: absolute;
+	top: 0;
+	left: -35px;
+	z-index: 100;
+}
+.page01 > .container > .content > .left:after{
+	display: block;
+	content: "";
+	width: 1px;
+	height:180px;
+	background:#ccc;
+	position: absolute;
+	top: 0px;
+	right:0px;
+}
+.page01 > .container > .content > .right:after{
+	display: block;
+	content: "";
+	width: 1px;
+	height:180px;
+	background:#ccc;
+	position: absolute;
+	top: 0px;
+	left:0px;
+}
+.page01 > .container > .foot{
+	margin-top: 80px;
+}
+.page01 > .container > .foot p:nth-child(1){
+	color: #c4141b;
+}
+.page01 > .container > .foot p span{
+	font-size: 22px;
+	font-weight: bold;
+}
+
+/*====page01结束=======*/
+/*====page02=======*/
+.page02{
+	width: 100%;
+	min-height:400px;
+	background:#049fbb ;
+	overflow: hidden;
+}
+.page02 > .container > .page02-title > h1{
+	font-size: 24px;
+	color: #ffffff;
+	margin: 64px 0;
+	font-weight: 500;
+	float: left;
+}
+.page02 > .container > ul > li{
+	display: inline-block;
+	margin-right: 13px;
+}
+.page02 > .container > .page02-title{
+	overflow: hidden;
+}
+.page02 > .container >.page02-title> .page02-line{
+	display: inline-block;
+	height: 1px;
+	/*background: #1da8c2;*/
+	width: 980px;
+	float: right;
+	background: red;
+}
+
+/*====page02结束=======*/
+/*====page03=======*/
+.page03{
+	text-align: center;
+	margin: 106px 0 60px 0;
+}
+.page03 > .container > .title > p{
+	font-size: 12px;
+	color: #888888;
+	margin-top: 23px;
+}
+.page03 > .container > .page03-ul {
+	overflow: hidden;
+	margin-top: 96px;
+	margin-bottom: 50px;
+}
+.page03 > .container > .page03-ul div{
+	margin: 0 auto;
+	background: #c4141b;
+	width: 100px;
+	height: 83px;
+	border-radius: 50%;
+	padding-top: 17px;
+}
+.page03 > .container > .page03-ul img{
+	width: 70px;
+	vertical-align: middle;
+	
+}
+
+.page03 > .container > .page03-ul li{
+	float: left;
+	width: 25%;
+}
+.page03 > .container > .page03-ul li p{
+	margin-top: 24px;
+	color: #888888;
+	max-width: 260px;
+    margin-left: 20px;
+	
+}
+.page03 > .container > .page03-pic img{
+	margin: 0 200px;
+}
+.page03 > .container > .page03-pic{
+		margin-bottom: 65px;
+}
+.page03 > .container > a{
+
+
+	padding: 17px 50px;
+	color: white;
+	background:#23201b ;
+	border-radius: 5px;
+}
+
+
+/*====page03结束=======*/

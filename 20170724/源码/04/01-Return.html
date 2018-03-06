@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function fn1(){
+            var a=1;
+            return function(){
+                console.log(a++)
+            }; //返回false   中止程序运行
+        }
+        console.log(fn1()());
+    </script>
+</body>
+</html>

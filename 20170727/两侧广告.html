@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;;
+				padding: 0;;
+			}
+			img{
+				width: 100px;
+				position: absolute;
+				top: 100px;
+			}
+		</style>
+	</head>
+	<body style="height: 2500px;">
+		<img src="img/aside.jpg" id="img"/>
+		
+		<script src="me.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var img=$("#img");console.log(img)
+			var top1=img.offsetTop;console.log(top1)
+			var timer=null,iTarget=0,speed=0;
+				function fn(){
+					clearInterval(timer);
+				timer=setInterval(function(){
+					iTarget=scroll().top+100;
+					speed=(iTarget - img.offsetTop) /10;
+					speed=speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					img.style.top=img.offsetTop+speed+"px";
+					
+					//window.scrollTo(0,H + speed)
+					if(speed ==0){
+						clearInterval(timer);
+				
+					
+				}
+			
+		},30)
+				}
+	window.onscroll=function(){
+		fn()
+	}
+		</script>
+	</body>
+</html>

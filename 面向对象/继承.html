@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*function animal(){
+				this.species="动物"
+			}
+			cat.prototype=new animal();
+			cat.prototype.constructor=cat;
+			function cat(name,color){
+				//animal.apply(this,arguments);
+				this.name=name;
+				this.color=color;
+			}
+			var cat1=new cat("大毛","黄色");
+			alert(cat1.species)*/
+			
+			
+			
+			
+		/*	function animal(){}
+			animal.prototype.species="动物";
+			function cat(name,color){
+				this.name=name;
+				this.color=color;
+			}
+			
+			cat.prototype=animal.prototype;
+			cat.prototype.a="2";
+			cat.prototype.constructor=cat;
+			var cat1=new cat("大黄","白色");
+			alert(cat1.a)*/
+			
+			
+			
+			function extend(Child, Parent) {
+	
+		　　　　var F = function(){};
+		　　　　F.prototype = Parent.prototype;
+		　　　　Child.prototype = new F();
+		　　　　Child.prototype.constructor = Child;
+				Child.uber = Parent.prototype;
+　　　　
+　　			}
+			function cat(name,color){
+				//animal.apply(this,arguments);
+				this.name=name;
+				this.color=color;
+			}
+			function animal(){}
+			animal.prototype.species="动物"
+			
+			extend(cat,animal);
+			var cat1=new cat("大毛","蓝色");
+			alert(cat1.species)
+		</script>
+	</body>
+</html>

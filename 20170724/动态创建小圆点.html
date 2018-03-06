@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 450px;
+				height: 280px;
+				overflow: hidden;
+				margin: 50px auto;
+				position: relative;
+			}
+			.box ul{
+				width: 700%;
+				list-style: none;
+				
+			}
+			.box ul li{
+				float: left;
+				width: 450px;
+				height: 280px;
+				
+			}
+			.box ul li img{
+				width: 100%;
+			}
+			ol{
+				position: absolute;
+				left: 50%;
+				bottom: 10px;
+				margin-left: -82.5px;
+				
+			}
+			ol li{
+				float: left;
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				background: black;
+				list-style: none;
+			}
+			ol li+li{
+				margin-left: 10px;
+			}
+			.cur{
+				background: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul>
+				<li><img src="images/11.jpg"/></li>
+				<li><img src="images/22.jpg"/></li>
+				<li><img src="images/33.jpg"/></li>
+				<li><img src="images/44.jpg"/></li>
+				<li><img src="images/55.jpg"/></li>
+			
+			</ul>
+			<ol class="ol">
+
+			</ol>
+		</div>
+		
+		<script type="text/javascript">
+			var box=document.querySelector(".box");
+			var aLi=box.querySelectorAll("ul li");
+			var ol=document.querySelector(".ol");
+			
+			for(var i=0;i<aLi.length;i++){
+				var oLi=document.createElement("li");
+				ol.appendChild(oLi);
+			}
+			ol.children[0].setAttribute("class","cur")
+
+		</script>
+	</body>
+</html>

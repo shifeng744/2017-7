@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    .box{
+    	margin: 50px auto;
+    	width: 250px;
+    }
+        .box div{
+            width: 150px;
+            height: 150px;
+            background-color: #ccc;
+            display: none;
+        }
+        .cur{
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <div  class="box">
+        <input type="button" value="话费1" class="cur">
+        <input type="button" value="话费2">
+        <input type="button" value="话费3">
+        <input type="button" value="话费4">
+        <div class="box1" style="display: block">a111111111</div>
+        <div >22222222222222</div>
+        <div>33333333333333</div>
+        <div>4444444444444444</div>
+    </div>
+    <div  class="box">
+        <input type="button" value="话费1" class="cur">
+        <input type="button" value="话费2">
+        <input type="button" value="话费3">
+        <input type="button" value="话费4">
+        <div class="box1" style="display: block">a111111111</div>
+        <div >22222222222222</div>
+        <div>33333333333333</div>
+        <div>4444444444444444</div>
+    </div>
+    <div  class="box">
+        <input type="button" value="话费1" class="cur">
+        <input type="button" value="话费2">
+        <input type="button" value="话费3">
+        <input type="button" value="话费4">
+        <div class="box1" style="display: block">a111111111</div>
+        <div >22222222222222</div>
+        <div>33333333333333</div>
+        <div>4444444444444444</div>
+    </div>
+    <script>
+		var obox=document.getElementsByClassName("box");
+		for(var i=0;i<obox.length;i++){
+			fn1(obox[i])
+		}
+        
+        
+        
+        fn1();
+        function fn1(boxclassname){
+        
+        var abtn=boxclassname.getElementsByTagName("input");
+        var adiv=boxclassname.getElementsByTagName("div");
+        	for(var i=0;i<abtn.length;i++)
+        {
+            abtn[i].index=i;
+            abtn[i].onclick=function ()
+            {
+                for(var i=0;i<abtn.length;i++){
+                    abtn[i].className=" ";
+                    adiv[i].style.display="none"
+                }
+                this.className="cur";
+                num=this.index;//关键代码
+                adiv[this.index].style.display="block"
+            }
+        }
+
+        }
+
+
+
+
+
+
+    </script>
+</body>
+</html>
